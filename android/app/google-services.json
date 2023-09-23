@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "787965707863",
+    "project_id": "hacx-b100c",
+    "storage_bucket": "hacx-b100c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787965707863:android:e0a3e1d14ef74a9fc64512",
+        "android_client_info": {
+          "package_name": "com.hacx.demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzQX1Z_amC78Bi3xWpkt4gjl3Me4sji2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
