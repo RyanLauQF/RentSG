@@ -1,38 +1,38 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import theme from "./theme"; // Import your Material-UI theme configuration
-import App from "./App"; // Import your main App component
-import ErrorPage from "./errorPage";
-import LoginPage from "./components/auth/loginpage";
-import TenantPage from "./components/tenant/TenantPage";
-import OwnerPage from "./components/homeowner/OwnerPage";
+import App from './App'; // Import your main App component
+import LoginPage from './components/auth/LoginPage';
+import OwnerPage from './components/homeowner/OwnerPage';
+import TenantPage from './components/tenant/TenantPage';
+import ErrorPage from './errorPage';
+import theme from './theme'; // Import your Material-UI theme configuration
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "login/",
         element: <LoginPage />,
+        index: true,
       },
       {
-        path: "tenant/",
+        path: 'tenant/',
         element: <TenantPage />,
       },
       {
-        path: "owner/",
+        path: 'owner/',
         element: <OwnerPage />,
       },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>

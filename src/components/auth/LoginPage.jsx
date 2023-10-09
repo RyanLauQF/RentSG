@@ -1,7 +1,7 @@
-import React from "react";
-import { CardContent, Grid, Typography } from "@mui/material";
-import Card from "@mui/material/Card";
-import { Link } from "react-router-dom";
+import { CardContent, Grid, Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
   return (
@@ -18,20 +18,20 @@ export default function LoginPage() {
         <Typography variant="h5">Are you a...</Typography>
       </Grid>
       <Grid item>
-        <Link to={"/owner"} style={{ textDecoration: "none" }}>
+        <Link to="/owner" style={{ textDecoration: 'none' }}>
           <Card
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               borderRadius: 6,
               minWidth: 280,
               minHeight: 280,
-              backgroundColor: "#dae4f5",
-              transition: "transform 0.1s ease-in-out",
-              "&:hover": {
-                transform: "scale(1.05)",
-                backgroundColor: "#8fb4f2",
+              backgroundColor: '#dae4f5',
+              transition: 'transform 0.1s ease-in-out',
+              '&:hover': {
+                transform: 'scale(1.05)',
+                backgroundColor: '#8fb4f2',
               },
             }}
           >
@@ -42,20 +42,20 @@ export default function LoginPage() {
         </Link>
       </Grid>
       <Grid item>
-        <Link to={"/tenant"} style={{ textDecoration: "none" }}>
+        <Link to="/tenant" style={{ textDecoration: 'none' }}>
           <Card
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               borderRadius: 6,
               minWidth: 280,
               minHeight: 280,
-              backgroundColor: "#dae4f5",
-              transition: "transform 0.1s ease-in-out",
-              "&:hover": {
-                transform: "scale(1.05)",
-                backgroundColor: "#8fb4f2",
+              backgroundColor: '#dae4f5',
+              transition: 'transform 0.1s ease-in-out',
+              '&:hover': {
+                transform: 'scale(1.05)',
+                backgroundColor: '#8fb4f2',
               },
             }}
           >
