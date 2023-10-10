@@ -1,3 +1,4 @@
+
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
 import PersonIcon from '@mui/icons-material/Person';
@@ -6,7 +7,6 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -117,6 +117,7 @@ function ResidenceStatus() {
     </Card>
   );
 }
+
 
 function ChatBot() {
   return (

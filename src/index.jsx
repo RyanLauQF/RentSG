@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App'; // Import your main App component
 import LoginPage from './components/auth/LoginPage';
 import OwnerPage from './components/homeowner/OwnerPage';
+import OwnerProfile from './components/homeowner/OwnerProfile';
 import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
 import ErrorPage from './errorPage';
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: 'tenant/profile',
         element: <TenantProfilePage />,
+      },
+      {
+        path: 'ownerprofile/',
+        element: <OwnerProfile />,
       },
     ],
   },
