@@ -11,7 +11,10 @@ import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
 import ErrorPage from './errorPage';
 import theme from './theme'; // Import your Material-UI theme configuration
-
+import Qr2 from './components/scan/Qr2';
+import Qrcode from './components/scan/Qrcode';
+import Face2 from './components/scan/Face2';
+import VerifyQr from './components/loading/VerifyQr';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
       {
         path: 'owner/',
         element: <OwnerPage />,
+      },
+      {
+        path: 'qr/',
+        element: <Qr2 />,
+      },
+      {
+        path: 'face/',
+        element: <Face2 />,
+      },
+      {
+        path: 'verifyQr/',
+        element: <VerifyQr />,
       },
       {
         path: 'tenant/profile',
