@@ -13,7 +13,7 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: 'Roboto, Arial, sans-serif', // Set your desired font family
+    fontFamily: `"Poppins", sans-serif`, // Set your desired font family
     fontSize: 16, // Set the default font size
     fontWeightLight: 300, // Set the light font weight
     fontWeightRegular: 400, // Set the regular font weight

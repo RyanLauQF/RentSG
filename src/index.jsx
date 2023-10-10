@@ -7,6 +7,7 @@ import App from './App'; // Import your main App component
 import LoginPage from './components/auth/LoginPage';
 import OwnerPage from './components/homeowner/OwnerPage';
 import TenantPage from './components/tenant/TenantPage';
+import TenantProfilePage from './components/tenant/TenantProfile';
 import ErrorPage from './errorPage';
 import theme from './theme'; // Import your Material-UI theme configuration
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'owner/',
         element: <OwnerPage />,
+      },
+      {
+        path: 'tenant/profile',
+        element: <TenantProfilePage />,
       },
     ],
   },
