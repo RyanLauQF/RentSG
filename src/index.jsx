@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App'; // Import your main App component
 import LoginPage from './components/auth/LoginPage';
 import OwnerPage from './components/homeowner/OwnerPage';
+import OwnerProfile from './components/homeowner/OwnerProfile';
 import TenantPage from './components/tenant/TenantPage';
 import ErrorPage from './errorPage';
 import theme from './theme'; // Import your Material-UI theme configuration
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'owner/',
         element: <OwnerPage />,
+      },
+      {
+        path: 'ownerprofile/',
+        element: <OwnerProfile />,
       },
     ],
   },
