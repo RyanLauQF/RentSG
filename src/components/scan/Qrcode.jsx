@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import { Html5QrcodeScanner } from 'html5-qrcode';
+import React, { useEffect, useState } from 'react';
+
 import VerifyQr from '../loading/VerifyQr';
 
 function Qrcode() {
@@ -32,7 +33,7 @@ function Qrcode() {
       ) : (
         <div>
           <h1>Scan QR Code</h1>
-          <div id="reader"></div>
+          <div id="reader" />
         </div>
       )}
     </div>

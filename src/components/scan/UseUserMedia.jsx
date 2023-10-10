@@ -8,9 +8,7 @@ export function useUserMedia() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia();
         setMediaStream(stream);
-      } catch (err) {
-
-      }
+      } catch (err) {}
     }
 
     if (!mediaStream) {
