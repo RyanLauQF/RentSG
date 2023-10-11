@@ -1,13 +1,19 @@
 import CircularProgress from '@mui/material/CircularProgress';
-import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import React from 'react';
 
 function VerifyQr() {
   return (
-    <Container align-items="center" mx="auto">
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+      }}
+    >
       <Stack
-        spacing={2}
+        spacing={4}
         direction="column"
         justifyContent="center"
         align-items="center"
@@ -25,7 +31,7 @@ function VerifyQr() {
           />
         </Stack>
       </Stack>
-    </Container>
+    </div>
   );
 }
 
