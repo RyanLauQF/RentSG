@@ -36,7 +36,7 @@ function BackButton() {
 
 function TenantDetail({ det, value }) {
   return (
-    <Box px={3} py={1.2}>
+    <Box px={4} py={1.2}>
       <Typography variant="subtitle2">{det}:</Typography>
       <Typography variant="body1">{value}</Typography>
     </Box>

@@ -12,12 +12,27 @@ import { useNavigate } from 'react-router-dom';
 // const pages = ['Products', 'Pricing', 'Blog'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props) {
   const navigate = useNavigate();
+  const [isNavigating, setIsNavigating] = React.useState(false);
   const navigateToProfilePage = () => {
-    navigate('/ownerprofile');
+    if (!isNavigating) {
+      setIsNavigating((prev) => !prev);
+      navigate('/owner/profile', {
+        state: {
+          ownerName: props.ownerName,
+          residences: props.residenceList,
+          image: props.image,
+          nric: props.nric,
+          contact: props.contact,
+          nok: props.nok,
+        },
+      });
+      setTimeout(() => {
+        setIsNavigating((prev) => !prev);
+      }, 100000);
+    }
   };
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -97,8 +112,8 @@ function ResponsiveAppBar() {
             <Tooltip title="Go to Profile Page">
               <IconButton onClick={navigateToProfilePage} sx={{ p: 0 }}>
                 <Avatar
-                  alt="Bob Tan"
-                  src="https://s.yimg.com/ny/api/res/1.2/IEGNapdUW_qWZk7QNlUH3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEwMjQ7aD03Njg-/https://media.zenfs.com/en-SG/homerun/rice_643/1d5468dbcffaa324d7004196cefa28dd"
+                  alt={props.ownerName}
+                  src="https://upload.wikimedia.org/wikipedia/en/7/72/Housing_and_Development_Board_%28logo%29.png"
                 />
               </IconButton>
             </Tooltip>
