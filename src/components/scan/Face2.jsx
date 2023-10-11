@@ -41,8 +41,8 @@ export default function Face2() {
             sx={{
               height: '500px',
               width: '300px',
-              border: '5px dashed grey',
-              zIndex: 'tooltip',
+              border: '3px dashed grey',
+
               borderRadius: '50%',
               position: 'absolute',
             }}

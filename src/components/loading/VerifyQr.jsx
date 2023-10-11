@@ -1,7 +1,7 @@
-import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import React from 'react';
 
 function VerifyQr() {
   return (
@@ -9,18 +9,20 @@ function VerifyQr() {
       <Stack
         spacing={2}
         direction="column"
-        justifyContent={'center'}
+        justifyContent="center"
         align-items="center"
       >
         <Stack item textAlign="center">
           <h1>Verifying profile...</h1>
         </Stack>
         <Stack item>
-          <CircularProgress size={50} 
-          sx={{
+          <CircularProgress
+            size={50}
+            sx={{
               position: 'relative',
-              mx: 'auto'
-            }}/>
+              mx: 'auto',
+            }}
+          />
         </Stack>
       </Stack>
     </Container>
