@@ -7,14 +7,14 @@ import App from './App'; // Import your main App component
 import LoginPage from './components/auth/LoginPage';
 import OwnerPage from './components/homeowner/OwnerPage';
 import OwnerProfile from './components/homeowner/OwnerProfile';
+import VerifyQr from './components/loading/VerifyQr';
+import Face2 from './components/scan/Face2';
+import Qr2 from './components/scan/Qr2';
 import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
 import ErrorPage from './errorPage';
 import theme from './theme'; // Import your Material-UI theme configuration
-import Qr2 from './components/scan/Qr2';
-import Qrcode from './components/scan/Qrcode';
-import Face2 from './components/scan/Face2';
-import VerifyQr from './components/loading/VerifyQr';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         element: <TenantProfilePage />,
       },
       {
-        path: 'ownerprofile/',
+        path: 'owner/profile/',
         element: <OwnerProfile />,
       },
     ],

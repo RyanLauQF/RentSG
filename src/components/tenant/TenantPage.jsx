@@ -1,4 +1,3 @@
-
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
 import PersonIcon from '@mui/icons-material/Person';
@@ -117,7 +116,6 @@ function ResidenceStatus() {
     </Card>
   );
 }
-
 
 function ChatBot() {
   return (
