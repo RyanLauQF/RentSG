@@ -27,7 +27,7 @@ export default function BotttomNavBar() {
         <BottomNavigationAction label="Home" icon={<HomeIcon />} />
         <BottomNavigationAction
           label="Profile"
-          icon={(
+          icon={
             <Link
               to="/owner/profile"
               s
@@ -35,7 +35,7 @@ export default function BotttomNavBar() {
             >
               <PersonIcon />
             </Link>
-  )}
+          }
         />
         <BottomNavigationAction label="ChatBot" icon={<HeadsetMicIcon />} />
       </BottomNavigation>
