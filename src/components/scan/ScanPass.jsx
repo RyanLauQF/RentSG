@@ -3,9 +3,9 @@ import Stack from '@mui/material/Stack';
 import React from 'react';
 import Webcam from 'react-webcam';
 
-export default function Face2() {
+export default function ScanPass() {
   return (
-    <Stack spacing={2} direction="column" align-items="center">
+    <Stack spacing={4} direction="column" align-items="center" m={2}>
       <Stack item>
         <Box
           sx={{
@@ -14,7 +14,7 @@ export default function Face2() {
             fontSize: 'h5.fontSize',
           }}
         >
-          Scan Tenant's Face
+          Scan Your Pass
         </Box>
       </Stack>
       <Stack item>
@@ -29,23 +29,12 @@ export default function Face2() {
           <Webcam
             mirrored="true"
             width={350} // Adjust the preferred width as needed
-            height={600} // Adjust the preferred height as needed
+            height={197} // Adjust the preferred height as needed
             videoConstraints={{
-              facingMode: 'user',
+              facingMode: 'environment',
             }}
             screenshotFormat="image/jpeg"
-            style={{ objectFit: 'cover', borderRadius: '5%' }}
-          />
-
-          <Box
-            sx={{
-              height: '500px',
-              width: '300px',
-              border: '3px dashed grey',
-
-              borderRadius: '50%',
-              position: 'absolute',
-            }}
+            style={{ objectFit: 'cover', borderRadius: '5%', border: 1 }}
           />
         </Box>
       </Stack>

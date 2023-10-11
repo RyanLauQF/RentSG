@@ -1,29 +1,37 @@
-import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Stack from '@mui/material/Stack';
-import Container from '@mui/material/Container';
+import React from 'react';
 
 function VerifyQr() {
   return (
-    <Container align-items="center" mx="auto">
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+      }}
+    >
       <Stack
-        spacing={2}
+        spacing={4}
         direction="column"
-        justifyContent={'center'}
+        justifyContent="center"
         align-items="center"
       >
         <Stack item textAlign="center">
           <h1>Verifying profile...</h1>
         </Stack>
         <Stack item>
-          <CircularProgress size={50} 
-          sx={{
+          <CircularProgress
+            size={50}
+            sx={{
               position: 'relative',
-              mx: 'auto'
-            }}/>
+              mx: 'auto',
+            }}
+          />
         </Stack>
       </Stack>
-    </Container>
+    </div>
   );
 }
 
