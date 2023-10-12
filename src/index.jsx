@@ -15,6 +15,8 @@ import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
 import ErrorPage from './errorPage';
 import theme from './theme'; // Import your Material-UI theme configuration
+import VerifyFailure from './components/verify/VerifyFailure';
+import VerifySuccess from './components/verify/VerifySuccess';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: 'qr/verifyQr/',
         element: <VerifyQr />,
+      },
+      {
+        path: 'qr/verifyQr/success',
+        element: <VerifySuccess />,
+      },
+      {
+        path: 'qr/verifyQr/failure',
+        element: <VerifyFailure />,
       },
       {
         path: 'scanPass',
