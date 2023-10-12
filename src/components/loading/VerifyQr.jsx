@@ -1,8 +1,17 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import Stack from '@mui/material/Stack';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function VerifyQr() {
+  const navigate = useNavigate();
+
+  delay(3000).then(() => {
+    navigate('failure');
+  });
+
   return (
     <div
       style={{

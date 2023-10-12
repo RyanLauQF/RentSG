@@ -14,6 +14,8 @@ import ScanPass from './components/scan/ScanPass';
 import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
 import TenantOnboarding from './components/tenant_onboard/TenantOnboard';
+import VerifyFailure from './components/verify/VerifyFailure';
+import VerifySuccess from './components/verify/VerifySuccess';
 import ErrorPage from './errorPage';
 import theme from './theme';
 
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: 'qr/verifyQr/',
         element: <VerifyQr />,
+      },
+      {
+        path: 'qr/verifyQr/success',
+        element: <VerifySuccess />,
+      },
+      {
+        path: 'qr/verifyQr/failure',
+        element: <VerifyFailure />,
       },
       {
         path: 'scanPass',

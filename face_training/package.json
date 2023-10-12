@@ -12,6 +12,7 @@
     "@azure/cognitiveservices-face": "^5.0.0",
     "@azure/ms-rest-js": "^2.7.0",
     "dotenv": "^16.3.1",
+    "file-set": "^5.1.3",
     "uuid": "^9.0.1"
   }
 }
