@@ -1,4 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close';
+import { Chip } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -11,34 +12,47 @@ import { useNavigate } from 'react-router-dom';
 
 import tenantsData from '../../../assets/tenants.json';
 
-const dateConverter = (passExpiry) => {
+const dateConverter = (passExpiry, leaseExpiry) => {
   const currentDate = new Date();
   const passExpiryDate = new Date(passExpiry);
-
+  const leaseExpiryDate = new Date(leaseExpiry);
+  let timeDifference;
   // Calculate the time difference in milliseconds
-  const timeDifference = passExpiryDate - currentDate;
-
+  if (passExpiry < leaseExpiry) {
+    timeDifference = passExpiryDate - currentDate;
+  } else {
+    timeDifference = leaseExpiryDate - currentDate;
+  }
+  return timeDifference;
+};
+const colorConverter = (timeDifference) => {
   // Calculate the time thresholds in milliseconds
   const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000; // 30 days
   const threeMonthsInMillis = 3 * 30 * 24 * 60 * 60 * 1000; // 180 days
 
-  if (timeDifference < 0) {
-    // If the provided date is in the past
-    return '#ff8787'; // Expired (in red)
-  }
+  // if (timeDifference < 0) {
+  //   // If the provided date is in the past
+  //   return '#ff8787'; // Expired (in red)
+  // }
   if (timeDifference <= oneMonthInMillis) {
-    return '#ffd43b'; // Less than 1 month away (in yellow)
+    return '#ff8787'; // Less than 1 month away (in red)
   }
   if (timeDifference <= threeMonthsInMillis) {
-    return 'orange'; // Between 1 and 6 months away (in orange)
+    return '#ffd43b'; // Between 1 and 3 months away (in orange)
   }
-  return '#69db7c'; // More than 6 months away (in green)
+  return '#a7dca5';
+  // return '#69db7c'; // More than 3 months away (in green)
 };
 
 export default function PersonCard({ personID }) {
+  const currentDate = new Date();
   const tenant = tenantsData.tenants[personID];
-  const colour = dateConverter(tenant.passExpiry);
-
+  const timeDifference = dateConverter(tenant.passExpiry, tenant.leaseExpiry);
+  const colour = colorConverter(timeDifference);
+  let daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  if (daysRemain <= 0) {
+    daysRemain = 0;
+  }
   const navigate = useNavigate();
   const navigateToViewProfile = () => {
     navigate('/tenant');
@@ -59,8 +73,8 @@ export default function PersonCard({ personID }) {
           <Tooltip title="Tenants Profile">
             <Avatar
               sx={{
-                width: 65,
-                height: 65,
+                width: 70,
+                height: 70,
                 alignContent: 'center',
               }}
               alt={tenant.firstName}
@@ -69,13 +83,20 @@ export default function PersonCard({ personID }) {
           </Tooltip>
 
           <Stack direction="column">
-            <Typography variant="body1">{name}</Typography>
-            <Typography variant="subtitle2">
-              Last day: {tenant.leaseExpiry}
+            <Typography variant="body1" fontWeight="bold" color="#002d40">
+              {name}
             </Typography>
-            <Typography variant="subtitle2">
+            {/* <Typography variant="subtitle2">
+              Last day: {tenant.leaseExpiry}
+            </Typography> */}
+            <Typography variant="subtitle2" color="#002d40">
               Expiry date: {tenant.passExpiry}
             </Typography>
+            {daysRemain == 0 ? (
+              <Chip label="Expired." />
+            ) : (
+              <Chip label={`${daysRemain} days remaining`} />
+            )}
           </Stack>
           <IconButton
             onClick={() => alert('delete')}

@@ -13,10 +13,10 @@ import Qrcode from './components/scan/Qrcode';
 import ScanPass from './components/scan/ScanPass';
 import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
-import ErrorPage from './errorPage';
-import theme from './theme'; // Import your Material-UI theme configuration
 import VerifyFailure from './components/verify/VerifyFailure';
 import VerifySuccess from './components/verify/VerifySuccess';
+import ErrorPage from './errorPage';
+import theme from './theme'; // Import your Material-UI theme configuration
 
 const router = createBrowserRouter([
   {

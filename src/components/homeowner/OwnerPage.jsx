@@ -26,14 +26,13 @@ export default function HomeOwnerPage() {
       <div className="content-holder" style={styles.scrollableContent}>
         {owner.residences.map((residence) => (
           <Box key={residence.residenceName} m="1rem">
-            <Typography variant="body2" marginLeft="1rem">
-              Address:
+            <Typography variant="body2" marginLeft="1rem" fontWeight="bold" fontSize="h6.fontSize" color="primary.main">
               {residence.residenceName}
             </Typography>
-            <Divider
+            {/* <Divider
               variant="middle"
               sx={{ borderBottomWidth: 2, borderColor: 'primary.main' }}
-            />
+            /> */}
             {residence.tenants.map((tenantID) => (
               <PersonCard personID={tenantID} />
             ))}
