@@ -5,8 +5,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App'; // Import your main App component
 import LoginPage from './components/auth/LoginPage';
-import OwnerPage from './components/homeowner/OwnerPage';
+import HomeOwnerPage from './components/homeowner/OwnerPage';
 import OwnerProfile from './components/homeowner/OwnerProfile';
+import VerifyQr from './components/loading/VerifyQr';
+import Face2 from './components/scan/Face2';
+import Qrcode from './components/scan/Qrcode';
+import ScanPass from './components/scan/ScanPass';
 import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
 import ErrorPage from './errorPage';
@@ -28,14 +32,30 @@ const router = createBrowserRouter([
       },
       {
         path: 'owner/',
-        element: <OwnerPage />,
+        element: <HomeOwnerPage />,
+      },
+      {
+        path: 'qr/',
+        element: <Qrcode />,
+      },
+      {
+        path: 'face/',
+        element: <Face2 />,
+      },
+      {
+        path: 'qr/verifyQr/',
+        element: <VerifyQr />,
+      },
+      {
+        path: 'scanPass',
+        element: <ScanPass />,
       },
       {
         path: 'tenant/profile',
         element: <TenantProfilePage />,
       },
       {
-        path: 'ownerprofile/',
+        path: 'owner/profile/',
         element: <OwnerProfile />,
       },
     ],

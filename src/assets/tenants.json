@@ -1,0 +1,44 @@
+{
+  "tenants": {
+    "000": {
+      "firstName": "Bob",
+      "lastName": "Tan",
+      "passExpiry": "25-06-2028",
+      "leaseExpiry": "23-06-2028",
+      "imageUrl": "https://onecms-res.cloudinary.com/image/upload/s--4SDj7ump--/f_auto,q_auto/v1/mediacorp/tdy/image/2022/07/24/20220617_llt_uncle_raymond-3.jpg?itok=PT3Sdazu",
+      "residence": "Binjai Hall #19"
+    },
+    "001": {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "passExpiry": "30-09-2029",
+      "leaseExpiry": "28-09-2029",
+      "imageUrl": "https://s.yimg.com/ny/api/res/1.2/IEGNapdUW_qWZk7QNlUH3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEwMjQ7aD03Njg-/https://media.zenfs.com/en-SG/homerun/rice_643/1d5468dbcffaa324d7004196cefa28dd",
+      "residence": "Tanjong Hall #20"
+    },
+    "002": {
+      "firstName": "Muthu",
+      "lastName": "Samy",
+      "passExpiry": "16-10-2023",
+      "leaseExpiry": "10-10-2028",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxBqFSUq0QiZoLQZ1iE2oVwqdhWWpc2RWn7HkYHLi_w0-rbhKX8LPy6VJog16qUh68dA&usqp=CAU",
+      "residence": "Binjai Hall #19"
+    },
+    "003": {
+      "firstName": "Samantha",
+      "lastName": "Kim",
+      "passExpiry": "11-09-2023",
+      "leaseExpiry": "10-10-2028",
+      "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
+      "residence": "Binjai Hall #19"
+    },
+    "004": {
+      "firstName": "Rachel",
+      "lastName": "Kim",
+      "passExpiry": "10-10-2023",
+      "leaseExpiry": "10-10-2028",
+      "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
+      "residence": "Banyan Hall #21"
+    }
+  }
+}

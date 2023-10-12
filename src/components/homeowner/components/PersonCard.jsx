@@ -1,85 +1,90 @@
+import CloseIcon from '@mui/icons-material/Close';
 import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import createTheme from '@mui/system/createTheme';
 import React from 'react';
-import { ThemeProvider } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-const theme = createTheme({
-  palette: {
-    text: {
-      primary: '#173A5E',
-      secondary: '#46505A',
-    },
-    action: {
-      active: '#001E3C',
-    },
-    success: {
-      dark: '#009688',
-    },
-  },
-});
+import tenantsData from '../../../assets/tenants.json';
 
-export default function PersonCard(props) {
-  const colour = props.isPassExpiryValid;
+const dateConverter = (passExpiry) => {
+  const currentDate = new Date();
+  const passExpiryDate = new Date(passExpiry);
+
+  // Calculate the time difference in milliseconds
+  const timeDifference = passExpiryDate - currentDate;
+
+  // Calculate the time thresholds in milliseconds
+  const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000; // 30 days
+  const threeMonthsInMillis = 3 * 30 * 24 * 60 * 60 * 1000; // 180 days
+
+  if (timeDifference < 0) {
+    // If the provided date is in the past
+    return '#ff8787'; // Expired (in red)
+  }
+  if (timeDifference <= oneMonthInMillis) {
+    return '#ffd43b'; // Less than 1 month away (in yellow)
+  }
+  if (timeDifference <= threeMonthsInMillis) {
+    return 'orange'; // Between 1 and 6 months away (in orange)
+  }
+  return '#69db7c'; // More than 6 months away (in green)
+};
+
+export default function PersonCard({ personID }) {
+  const tenant = tenantsData.tenants[personID];
+  const colour = dateConverter(tenant.passExpiry);
 
   const navigate = useNavigate();
   const navigateToViewProfile = () => {
     navigate('/tenant');
   };
 
-  const name = `${props.firstName} ${props.lastName}`;
+  const name = `${tenant.firstName} ${tenant.lastName}`;
+
   return (
-    <ThemeProvider theme={theme}>
-      <Box m={2}>
-        <Card
-          sx={{
-            minWidth: 275,
-            height: '10',
-            boxShadow: 1,
-            borderRadius: 2,
-            p: 2,
-          }}
-          style={{ backgroundColor: colour }}
+    <Card
+      sx={{ backgroundColor: colour, m: 2, borderRadius: '10px' }}
+      height="100vh"
+    >
+      <CardContent>
+        <Stack
+          direction="row"
+          sx={{ alignItems: 'center', justifyContent: 'space-between' }}
         >
-          <CardContent
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Tooltip title="Tenant's Profile">
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Avatar
-                  alt={props.firstName}
-                  src={props.image}
-                  style={{ marginRight: '1rem' }}
-                />
-                <Typography variant="h6" textAlign="center">
-                  {name}
-                </Typography>
-              </div>
-            </Tooltip>
-            {/* <Typography variant="body2" textAlign="center" mt="2rem"> */}
-            <Box>Lease Expiry Date: {props.leaseExpiry}</Box>
-            {/* </Typography> */}
-            <Typography variant="body2" textAlign="center">
-              Pass Expiry Date: {props.passExpiry}
+          <Tooltip title="Tenants Profile">
+            <Avatar
+              sx={{
+                width: 65,
+                height: 65,
+                alignContent: 'center',
+              }}
+              alt={tenant.firstName}
+              src={tenant.imageUrl}
+            />
+          </Tooltip>
+
+          <Stack direction="column">
+            <Typography variant="body1">{name}</Typography>
+            <Typography variant="subtitle2">
+              Last day: {tenant.leaseExpiry}
             </Typography>
-          </CardContent>
-        </Card>
-      </Box>
-    </ThemeProvider>
+            <Typography variant="subtitle2">
+              Expiry date: {tenant.passExpiry}
+            </Typography>
+          </Stack>
+          <IconButton
+            onClick={() => alert('delete')}
+            sx={{ marginRight: 1, marginTop: 1 }}
+          >
+            <CloseIcon sx={{ height: 0.7, marginRight: -2 }} />
+          </IconButton>
+        </Stack>
+      </CardContent>
+    </Card>
   );
 }
