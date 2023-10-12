@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import * as React from 'react';
 
-import BotButton from '../homeowner/components/BotButton';
-import BottomNavBar from './components/BottomNavBar';
-import Header from './components/Header';
+import BotButton from '../shared/BotButton';
+import BottomNavBar from '../shared/BottomNavBar';
+import Header from '../shared/Header';
 import PassStatus from './components/PassStatus';
 import ResidenceStatus from './components/ResidenceStatus';
 

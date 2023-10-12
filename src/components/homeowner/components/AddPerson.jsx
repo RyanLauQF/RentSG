@@ -33,7 +33,12 @@ export default function AddPerson() {
             marginLeft: '6.5rem',
           }}
         >
-          <Typography textAlign="center" marginRight="3.8rem">
+          <Typography
+            textAlign="center"
+            marginRight="3.8rem"
+            fontWeight="bold"
+            color="#002d40"
+          >
             Add Person
           </Typography>
           <AddSharpIcon />
