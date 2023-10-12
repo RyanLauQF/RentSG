@@ -30,9 +30,12 @@ export default function AddPerson() {
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
-            marginLeft: '6.5rem',
+            // marginLeft: '6.5rem',
+            mx: 'auto',
+            justifyContent: 'space-evenly',
           }}
         >
+          <AddSharpIcon />
           <Typography
             textAlign="center"
             marginRight="3.8rem"
@@ -41,7 +44,6 @@ export default function AddPerson() {
           >
             Add Person
           </Typography>
-          <AddSharpIcon />
         </CardContent>
       </Card>
     </Box>
