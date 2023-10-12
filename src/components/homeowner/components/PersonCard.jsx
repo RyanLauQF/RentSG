@@ -1,9 +1,8 @@
-import CloseIcon from '@mui/icons-material/Close';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { Chip } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
@@ -45,7 +44,6 @@ const colorConverter = (timeDifference) => {
 };
 
 export default function PersonCard({ personID }) {
-  const currentDate = new Date();
   const tenant = tenantsData.tenants[personID];
   const timeDifference = dateConverter(tenant.passExpiry, tenant.leaseExpiry);
   const colour = colorConverter(timeDifference);
@@ -68,13 +66,13 @@ export default function PersonCard({ personID }) {
       <CardContent>
         <Stack
           direction="row"
-          sx={{ alignItems: 'center', justifyContent: 'space-between' }}
+          sx={{ alignItems: 'center', justifyContent: 'space-evenly' }}
         >
           <Tooltip title="Tenants Profile">
             <Avatar
               sx={{
-                width: 70,
-                height: 70,
+                width: 80,
+                height: 80,
                 alignContent: 'center',
               }}
               alt={tenant.firstName}
@@ -93,17 +91,18 @@ export default function PersonCard({ personID }) {
               Expiry date: {tenant.passExpiry}
             </Typography>
             {daysRemain == 0 ? (
-              <Chip label="Expired." />
+              <Chip
+                label={<Typography fontWeight="bold">Expired</Typography>}
+              />
             ) : (
               <Chip label={`${daysRemain} days remaining`} />
             )}
           </Stack>
-          <IconButton
-            onClick={() => alert('delete')}
-            sx={{ marginRight: 1, marginTop: 1 }}
-          >
-            <CloseIcon sx={{ height: 0.7, marginRight: -2 }} />
-          </IconButton>
+          {daysRemain == 0 ? (
+            <NotificationsActiveIcon
+              sx={{ height: 0.7, marginRight: -2, color: '#002d40' }}
+            />
+          ) : null}
         </Stack>
       </CardContent>
     </Card>

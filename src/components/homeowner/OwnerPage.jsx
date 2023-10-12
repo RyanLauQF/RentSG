@@ -1,12 +1,11 @@
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 
 import ownersData from '../../assets/owner.json';
+import BottomNavigation from '../shared/BottomNavBar';
+import Header from '../shared/Header';
 import AddPerson from './components/AddPerson';
-import BottomNavigation from './components/BottomNavigation';
-import Header from './components/Header';
 import PersonCard from './components/PersonCard';
 
 export default function HomeOwnerPage() {
@@ -26,7 +25,13 @@ export default function HomeOwnerPage() {
       <div className="content-holder" style={styles.scrollableContent}>
         {owner.residences.map((residence) => (
           <Box key={residence.residenceName} m="1rem">
-            <Typography variant="body2" marginLeft="1rem" fontWeight="bold" fontSize="h6.fontSize" color="primary.main">
+            <Typography
+              variant="body2"
+              marginLeft="1rem"
+              fontWeight="bold"
+              fontSize="h6.fontSize"
+              color="primary.main"
+            >
               {residence.residenceName}
             </Typography>
             {/* <Divider
