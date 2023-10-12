@@ -4,21 +4,9 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
-import { createTheme } from '@mui/material/styles'; // Import ThemeProvider from Material-UI
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const theme = createTheme({
-  typography: {
-    fontFamily: '"Poppins", sans-serif',
-    fontSize: 14,
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
-  },
-});
 
 function BackButton() {
   const navigate = useNavigate();
@@ -43,35 +31,39 @@ function TenantDetail({ det, value }) {
   );
 }
 
-function TenantDetails() {
-  const details = [
-    {
-      key: 'Name',
-      value: 'John Doe',
-    },
-    {
-      key: 'FIN',
-      value: '123456789',
-    },
-    {
-      key: 'Pass Expiry',
-      value: '30-9-2023',
-    },
-    {
-      key: 'Nationality',
-      value: 'American',
-    },
-  ];
+function TenantDetails({ tenant }) {
   return (
     <Box>
-      {details.map((detail) => (
-        <TenantDetail det={detail.key} value={detail.value} />
-      ))}
+      <TenantDetail det="Name" value={tenant.name} />
+      <TenantDetail det="FIN Number" value={tenant.finNumber} />
+      <TenantDetail det="Nationality" value={tenant.nationality} />
+      <TenantDetail det="Pass Expiry" value={tenant.pass.passExpiry} />
+      <TenantDetail det="Contact No" value={tenant.contactNo} />
     </Box>
   );
 }
 
 export default function TenantProfilePage() {
+  const tenant = {
+    firstName: 'John',
+    lastName: 'Doe',
+    finNumber: '123456789',
+    contactNo: '81234567',
+    nationality: 'American',
+    imageUrl:
+      'https://onecms-res.cloudinary.com/image/upload/s--4SDj7ump--/f_auto,q_auto/v1/mediacorp/tdy/image/2022/07/24/20220617_llt_uncle_raymond-3.jpg?itok=PT3Sdazu',
+    pass: {
+      valid: true,
+      passExpiry: '25-06-2028',
+      passType: 'FIN',
+    },
+    residence: {
+      hasResidence: true,
+      residenceAddress: 'Binjai Hall #19',
+      leaseExpiry: '23-06-2028',
+    },
+  };
+
   return (
     <>
       <BackButton />
@@ -107,17 +99,25 @@ export default function TenantProfilePage() {
           />
         </Paper>
       </Box>
-      <TenantDetails />
+      <TenantDetails tenant={tenant} />
       <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="body2" sx={{ pt: 2 }}>
+        <Typography variant="body2" sx={{ pt: 1.2 }}>
           Use this to connect with a landlord:
         </Typography>
-        <Typography sx={{ pt: 9 }}>qrcode</Typography>
+        <Box
+          component="img"
+          sx={{
+            height: 180,
+            width: 180,
+          }}
+          alt="QRcode"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAAB0CAYAAABUmhYnAAAAAklEQVR4AewaftIAAAKrSURBVO3BQW7kQAwEwUxC//9yrY88NSBIM2sTjDA/WGMUa5RijVKsUYo1SrFGKdYoxRqlWKMUa5RijVKsUYo1SrFGKdYoxRrl4iGVb0rCHSonSThR+aYkPFGsUYo1SrFGuXhZEt6kcqLyTUl4k8qbijVKsUYp1igXH6ZyRxLuSEKn0iWhU3mTyh1J+KRijVKsUYo1ysVwKl0SOpUuCX9ZsUYp1ijFGuXij1O5Q2WyYo1SrFGKNcrFhyXhk5JwonKShCeS8JsUa5RijVKsUS5epvJNKl0STpLQqXRJOFH5zYo1SrFGKdYo5gdrjGKNUqxRijXKxUMqXRI6lS4JnUqXhE6lS8KJSpeEE5UuCXeodEk4UemS8KZijVKsUYo1ysXLVLokdConKl0SOpUnVLok3KHymxVrlGKNUqxRLr4sCXeodEnoVE5U7lB5QuUOlS4JTxRrlGKNUqxRLl6WhE6lS8IdSehU7khCp9KpnCShUzlJwonKJxVrlGKNUqxRLl6mcqLyRBLelIQTlS4JnUqn0iWhS0Kn8qZijVKsUYo1ysVDSfifVO5Iwm+ShDcVa5RijVKsUS4eUvmmJHRJ6FTuUOmS0CWhU3lC5SQJTxRrlGKNUqxRLl6WhDepfFISTlS6JLwpCW8q1ijFGqVYo1x8mModSbhDpUvCHSpdEk5UTpJwkoRPKtYoxRqlWKNc/HFJ6FS6JHQqXRI6lS4JJyp3qHRJeFOxRinWKMUa5eKPU/kklTtUTpLQqXRJeKJYoxRrlGKNcvFhSfikJJyonKicJOFEpUvCiUqXhDcVa5RijVKsUS5epvJNKk8koVPpVLokvEmlS8ITxRqlWKMUaxTzgzVGsUYp1ijFGqVYoxRrlGKNUqxRijVKsUYp1ijFGqVYoxRrlGKNUqxR/gEuBu4UJrCvfQAAAABJRU5ErkJggg=="
+        />
       </Box>
     </>
   );
