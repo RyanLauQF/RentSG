@@ -9,7 +9,7 @@ export default function BotButton() {
       <SpeedDial
         ariaLabel="SpeedDial basic example"
         sx={{ position: 'fixed', bottom: 35, right: 16 }}
-        icon={<SmartToyIcon />}
+        icon={<SmartToyIcon sx={{ color: '#d9ecf2' }} />}
       />
     </Box>
   );

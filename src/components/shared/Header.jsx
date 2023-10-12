@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
-export default function Header({ firstName }) {
+export default function Header({ name }) {
   return (
     <Box sx={{ px: 4, py: 3 }}>
       <Typography
@@ -15,7 +15,7 @@ export default function Header({ firstName }) {
         variant="h4"
         sx={{ fontWeight: 'bold', color: 'primary.main', flexWrap: 'wrap' }}
       >
-        {firstName}!
+        {name}!
       </Typography>
     </Box>
   );

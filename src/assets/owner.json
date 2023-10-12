@@ -10,15 +10,18 @@
       "residences": [
         {
           "residenceName": "Binjai Hall #19",
-          "tenants": ["000", "002", "003"]
+          "tenants": ["000", "002", "003"],
+          "type": "4-room HDB"
         },
         {
           "residenceName": "Tanjong Hall #20",
-          "tenants": ["001"]
+          "tenants": ["001"],
+          "type": "2-room Condo"
         },
         {
           "residenceName": "Banyan Hall #21",
-          "tenants": ["004"]
+          "tenants": ["004"],
+          "type": "3-room HDB"
         }
       ]
     }
