@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './App'; // Import your main App component
+import App from './App';
 import LoginPage from './components/auth/LoginPage';
 import HomeOwnerPage from './components/homeowner/OwnerPage';
 import OwnerProfile from './components/homeowner/OwnerProfile';
@@ -13,8 +13,9 @@ import Qrcode from './components/scan/Qrcode';
 import ScanPass from './components/scan/ScanPass';
 import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
+import TenantOnboarding from './components/tenant_onboard/TenantOnboard';
 import ErrorPage from './errorPage';
-import theme from './theme'; // Import your Material-UI theme configuration
+import theme from './theme';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: 'owner/profile/',
         element: <OwnerProfile />,
+      },
+      {
+        path: 'tenant/onboard/',
+        element: <TenantOnboarding />,
       },
     ],
   },
