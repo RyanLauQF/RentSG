@@ -9,15 +9,42 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function PersonCard(props) {
-  const colour = props.isPassExpiryValid;
+import tenantsData from '../../../assets/tenants.json';
+
+const dateConverter = (passExpiry) => {
+  const currentDate = new Date();
+  const passExpiryDate = new Date(passExpiry);
+
+  // Calculate the time difference in milliseconds
+  const timeDifference = passExpiryDate - currentDate;
+
+  // Calculate the time thresholds in milliseconds
+  const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000; // 30 days
+  const threeMonthsInMillis = 3 * 30 * 24 * 60 * 60 * 1000; // 180 days
+
+  if (timeDifference < 0) {
+    // If the provided date is in the past
+    return '#ff8787'; // Expired (in red)
+  }
+  if (timeDifference <= oneMonthInMillis) {
+    return '#ffd43b'; // Less than 1 month away (in yellow)
+  }
+  if (timeDifference <= threeMonthsInMillis) {
+    return 'orange'; // Between 1 and 6 months away (in orange)
+  }
+  return '#69db7c'; // More than 6 months away (in green)
+};
+
+export default function PersonCard({ personID }) {
+  const tenant = tenantsData.tenants[personID];
+  const colour = dateConverter(tenant.passExpiry);
 
   const navigate = useNavigate();
   const navigateToViewProfile = () => {
     navigate('/tenant');
   };
 
-  const name = `${props.firstName} ${props.lastName}`;
+  const name = `${tenant.firstName} ${tenant.lastName}`;
 
   return (
     <Card
@@ -36,18 +63,18 @@ export default function PersonCard(props) {
                 height: 65,
                 alignContent: 'center',
               }}
-              alt={props.firstName}
-              src={props.image}
+              alt={tenant.firstName}
+              src={tenant.imageUrl}
             />
           </Tooltip>
 
           <Stack direction="column">
             <Typography variant="body1">{name}</Typography>
             <Typography variant="subtitle2">
-              Last day: {props.leaseExpiry}
+              Last day: {tenant.leaseExpiry}
             </Typography>
             <Typography variant="subtitle2">
-              Expiry date: {props.passExpiry}
+              Expiry date: {tenant.passExpiry}
             </Typography>
           </Stack>
           <IconButton
@@ -59,52 +86,5 @@ export default function PersonCard(props) {
         </Stack>
       </CardContent>
     </Card>
-    // <ThemeProvider>
-    //   <Box m={2}>
-    //     <Card
-    //       sx={{
-    //         minWidth: 275,
-    //         height: '10rem',
-    //         boxShadow: 4,
-    //         borderRadius: 6,
-    //         p: 2,
-    //       }}
-    //       style={{ backgroundColor: colour }}
-    //     >
-    //       <CardContent
-    //         style={{
-    //           display: 'flex',
-    //           flexDirection: 'column',
-    //           alignItems: 'center',
-    //         }}
-    //       >
-    //         <Tooltip title="Tenant's Profile">
-    //           <div
-    //             style={{
-    //               display: 'flex',
-    //               justifyContent: 'center',
-    //               alignItems: 'center',
-    //             }}
-    //           >
-    //             <Avatar
-    //               alt={props.firstName}
-    //               src={props.image}
-    //               style={{ marginRight: '1rem' }}
-    //             />
-    //             <Typography variant="h6" textAlign="center">
-    //               {name}
-    //             </Typography>
-    //           </div>
-    //         </Tooltip>
-    //         {/* <Typography variant="body2" textAlign="center" mt="2rem"> */}
-    //         <Box>Lease Expiry Date: {props.leaseExpiry}</Box>
-    //         {/* </Typography> */}
-    //         <Typography variant="body2" textAlign="center">
-    //           Pass Expiry Date: {props.passExpiry}
-    //         </Typography>
-    //       </CardContent>
-    //     </Card>
-    //   </Box>
-    // </ThemeProvider>
   );
 }
