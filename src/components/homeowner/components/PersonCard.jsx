@@ -60,20 +60,21 @@ export default function PersonCard({ personID }) {
 
   return (
     <Card
-      sx={{ backgroundColor: colour, m: 2, borderRadius: '10px' }}
+      sx={{
+        backgroundColor: colour,
+        m: 2,
+        borderRadius: '10px',
+      }}
       height="100vh"
     >
       <CardContent>
-        <Stack
-          direction="row"
-          sx={{ alignItems: 'center', justifyContent: 'space-evenly' }}
-        >
+        <Stack direction="row" sx={{ alignItems: 'center' }}>
           <Tooltip title="Tenants Profile">
             <Avatar
               sx={{
                 width: 80,
                 height: 80,
-                alignContent: 'center',
+                marginRight: 2,
               }}
               alt={tenant.firstName}
               src={tenant.imageUrl}
@@ -84,13 +85,10 @@ export default function PersonCard({ personID }) {
             <Typography variant="body1" fontWeight="bold" color="#002d40">
               {name}
             </Typography>
-            {/* <Typography variant="subtitle2">
-              Last day: {tenant.leaseExpiry}
-            </Typography> */}
             <Typography variant="subtitle2" color="#002d40">
               Expiry date: {tenant.passExpiry}
             </Typography>
-            {daysRemain == 0 ? (
+            {daysRemain === 0 ? (
               <Chip
                 label={<Typography fontWeight="bold">Expired</Typography>}
               />
@@ -98,9 +96,9 @@ export default function PersonCard({ personID }) {
               <Chip label={`${daysRemain} days remaining`} />
             )}
           </Stack>
-          {daysRemain == 0 ? (
+          {daysRemain === 0 ? (
             <NotificationsActiveIcon
-              sx={{ height: 0.7, marginRight: -2, color: '#002d40' }}
+              sx={{ height: 0.7, marginLeft: 2, color: '#002d40' }}
             />
           ) : null}
         </Stack>

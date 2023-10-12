@@ -18,7 +18,7 @@ export default function AddPerson() {
         raised
         sx={{
           minWidth: 275,
-          bgcolor: '#ffffe4',
+          bgcolor: '#d9ecf2',
           height: '4rem',
           boxShadow: 4,
           borderRadius: 6,

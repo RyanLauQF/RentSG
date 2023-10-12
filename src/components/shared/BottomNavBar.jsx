@@ -2,39 +2,36 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function BotttomNavBar() {
+export default function BotttomNavBar({ account }) {
   return (
-    <Box
-      sx={{
+    <BottomNavigation
+      showLabels
+      style={{
         position: 'fixed',
-        bottom: 3,
+        bottom: 0,
         left: 0,
         right: 0,
+        backgroundColor: '#d9ecf2',
       }}
     >
-      <Divider
-        variant="middle"
-        sx={{ borderBottomWidth: 2, borderColor: 'primary.main' }}
+      <BottomNavigationAction
+        label="Home"
+        icon={<HomeIcon style={{ fill: '#1aa6b7' }} />}
       />
-      <BottomNavigation showLabels>
-        <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-        <BottomNavigationAction
-          label="Profile"
-          icon={
-            <Link
-              to="/tenant/profile"
-              style={{ color: 'inherit', textDecoration: 'none' }}
-            >
-              <PersonIcon />
-            </Link>
-          }
-        />
-      </BottomNavigation>
-    </Box>
+      <BottomNavigationAction
+        label="Profile"
+        icon={
+          <Link
+            to={`/${account}/profile`}
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            <PersonIcon style={{ fill: '#1aa6b7' }} />
+          </Link>
+        }
+      />
+    </BottomNavigation>
   );
 }

@@ -1,8 +1,11 @@
+import { Divider } from '@mui/material';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 
 import ownersData from '../../assets/owner.json';
+import BotButton from '../shared/BotButton';
 import BottomNavigation from '../shared/BottomNavBar';
 import Header from '../shared/Header';
 import AddPerson from './components/AddPerson';
@@ -12,46 +15,55 @@ export default function HomeOwnerPage() {
   const ownerID = '000'; // placeholder
   const owner = ownersData.owners[ownerID];
 
-  const styles = {
-    scrollableContent: {
-      overflowY: 'auto',
-      height: 'calc(100vh - 9rem)', // Adjust as needed
-    },
-  };
-
   return (
     <>
       <Header name={owner.firstName} />
-      <div className="content-holder" style={styles.scrollableContent}>
+      <Divider
+        sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 5, mx: '2rem' }}
+      />
+      <Box sx={{ pb: 7 }}>
         {owner.residences.map((residence) => (
           <Box key={residence.residenceName} m="1rem">
-            <Typography
-              variant="body2"
-              marginLeft="1rem"
-              fontWeight="bold"
-              fontSize="h6.fontSize"
-              color="primary.main"
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="end"
             >
-              {residence.residenceName}
-            </Typography>
-            {/* <Divider
-              variant="middle"
-              sx={{ borderBottomWidth: 2, borderColor: 'primary.main' }}
-            /> */}
+              <Typography
+                variant="body2"
+                marginLeft="1rem"
+                fontWeight="bold"
+                fontSize="h6.fontSize"
+                color="primary.main"
+              >
+                {residence.residenceName}
+              </Typography>
+              <Typography
+                variant="body2"
+                marginRight="1rem"
+                fontWeight="bold"
+                // fontSize=""
+                color="primary.main"
+              >
+                {residence.type}
+              </Typography>
+            </Stack>
             {residence.tenants.map((tenantID) => (
               <PersonCard personID={tenantID} />
             ))}
             <AddPerson />
           </Box>
         ))}
-      </div>
+      </Box>
+      <BotButton />
       <BottomNavigation
-        ownerName={owner.firstName}
-        residenceList={owner.residences}
-        image={owner.imageUrl}
-        nric={owner.nric}
-        nok={owner.nok}
-        contact={owner.contact}
+        // ownerName={owner.firstName}
+        // residenceList={owner.residences}
+        // image={owner.imageUrl}
+        // nric={owner.nric}
+        // nok={owner.nok}
+        // contact={owner.contact}
+        account="owner"
       />
     </>
   );
