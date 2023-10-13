@@ -57,7 +57,11 @@ const router = createBrowserRouter([
         element: <OwnerProfile />,
       },
       {
-        path: 'owner/tenant/',
+        path: 'tenant/onboard/pass/',
+        element: <TenantOnboarding />,
+      },
+      {
+        path: 'owner/:tenantId/profile/',
         element: <OwnerTenantPage />,
       },
       {
