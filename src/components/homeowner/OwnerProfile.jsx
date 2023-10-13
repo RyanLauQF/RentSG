@@ -1,20 +1,16 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Avatar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Paper from '@mui/material/Paper';
 import { createTheme } from '@mui/material/styles'; // Import ThemeProvider from Material-UI
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import BotButton from '../shared/BotButton';
 import BottomNavigation from '../shared/BottomNavBar';
 
 const theme = createTheme({
   typography: {
-    fontFamily: '"Poppins", sans-serif',
+    fontFamily: '"Nacelle", sans-serif',
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,
@@ -27,35 +23,23 @@ const landLord = {
   Name: 'Land',
   lastName: 'lord',
   imageUrl:
-    'https://upload.wikimedia.org/wikipedia/en/7/72/Housing_and_Development_Board_%28logo%29.png',
+    'https://s.yimg.com/ny/api/res/1.2/IEGNapdUW_qWZk7QNlUH3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEwMjQ7aD03Njg-/https://media.zenfs.com/en-SG/homerun/rice_643/1d5468dbcffaa324d7004196cefa28dd',
   residences: ['Binjai Hall #19', 'Tanjong Hall #20', 'Banyan Hall #21'],
-  NRIC: 'S123456789',
-  'Next-of-Kin': 'John Tan, 81234567',
+  NRIC: 'S1234567A',
+  'Next-of-Kin': 'John Tan',
   'NOK Contact': '81234567',
 };
 
 const { lastName, imageUrl, residences, ...landLordDetails } = landLord;
-
-function BackButton() {
-  const navigate = useNavigate();
-
-  const goBack = () => {
-    navigate(-1);
-  };
-
-  return (
-    <IconButton onClick={goBack} sx={{ padding: 2 }}>
-      <ArrowBackIcon />
-    </IconButton>
-  );
-}
 
 function DetailsD({ details }) {
   return (
     <>
       {Object.entries(details).map(([key, value]) => (
         <Box px={4} py={1.2}>
-          <Typography variant="subtitle2">{key}:</Typography>
+          <Typography variant="h6" fontWeight="bold" color="primary.main">
+            {key}:
+          </Typography>
           <Typography variant="body1">{value}</Typography>
         </Box>
       ))}
@@ -68,12 +52,19 @@ export default function OwnerProfile() {
   return (
     <>
       {/* <BackButton /> */}
-      <Typography variant="h6" sx={{ px: 3, mt: 3 }}>
+      <Typography
+        variant="h4"
+        sx={{
+          px: 4,
+          my: 3,
+          fontWeight: 'bold',
+          color: 'primary.main',
+        }}
+      >
         Profile
       </Typography>
       <Divider
-        variant="middle"
-        sx={{ borderBottomWidth: 2, borderColor: 'primary.main' }}
+        sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 5, mx: '2rem' }}
       />
       <Box
         display="flex"
@@ -82,25 +73,25 @@ export default function OwnerProfile() {
         justifyContent="center"
         sx={{ pt: 3 }}
       >
-        <Paper
+        {/* <Paper
           sx={{
             width: 128,
             height: 128,
             alignItems: 'center',
             justifyContent: 'center',
+          }}> */}
+
+        <Avatar
+          sx={{
+            width: 128,
+            height: 128,
+            alignContent: 'center',
+            color: 'primary.main',
           }}
-        >
-          <Avatar
-            sx={{
-              width: 128,
-              height: 128,
-              alignContent: 'center',
-              color: 'primary.main',
-            }}
-            alt={landLord.firstName}
-            src={landLord.imageUrl}
-          />
-        </Paper>
+          alt={landLord.firstName}
+          src={landLord.imageUrl}
+        />
+        {/* </Paper> */}
       </Box>
       <DetailsD details={landLordDetails} />
       <BotButton />
