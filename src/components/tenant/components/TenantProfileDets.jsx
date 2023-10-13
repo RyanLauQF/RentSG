@@ -4,16 +4,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
-function TenantDetail({ det, value }) {
-  return (
-    <Box px={4} py={1.2}>
-      <Typography variant="h6" fontWeight="bold" color="primary.main">
-        {det}:
-      </Typography>
-      <Typography variant="body1">{value}</Typography>
-    </Box>
-  );
-}
+import TenantDetail from '../../shared/TenantDetail';
 
 function TenantDetails({ tenant }) {
   return (
@@ -42,7 +33,7 @@ export default function TenantProfileDets({ tenant }) {
           color: 'primary.main',
         }}
       >
-        Tenant Profile
+        Profile
       </Typography>
       <Divider
         sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 5, mx: '2rem' }}

@@ -10,7 +10,8 @@
       "passType": "LTVP",
       "contactNo": "87654321",
       "nationality": "Korean",
-      "finNumber": "S12345678A"
+      "finNumber": "S12345678A",
+      "lastDay" : "2028-10-11"
     },
     "001": {
       "firstName": "Alice",
@@ -22,7 +23,8 @@
       "passType": "Employment Pass",
       "contactNo": "82345671",
       "nationality": "Australian",
-      "finNumber": "S12345678A"
+      "finNumber": "S12345678A",
+      "lastDay": "2029-09-28"
     },
     "002": {
       "firstName": "Sotteok",
@@ -34,7 +36,8 @@
       "passType": "FIN",
       "contactNo": "81234567",
       "nationality": "American",
-      "finNumber": "S12345678A"
+      "finNumber": "S12345678A",
+      "lastDay": "2023-10-25"
     },
     "003": {
       "firstName": "Ali",
@@ -46,7 +49,9 @@
       "passType": "S Pass",
       "contactNo": "87654321",
       "nationality": "Indian",
-      "finNumber": "S12345678A"
+      "finNumber": "S12345678A",
+      "lastDay": "2023-11-15"
+
     },
     "004": {
       "firstName": "Hotteok",
@@ -58,7 +63,8 @@
       "passType": "LTVP",
       "contactNo": "86543217",
       "nationality": "Korean",
-      "finNumber": "S12345678A"
+      "finNumber": "S12345678A",
+      "lastDay": "2028-10-10"
     }
   }
 }
