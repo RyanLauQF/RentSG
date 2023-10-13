@@ -145,7 +145,7 @@ export default function TenantOnboarding() {
       >
         <Typography
           fontSize="20px"
-          sx={{ color: 'grey', fontWeight: 600, px: 3 }}
+          sx={{ color: 'primary.main', fontWeight: 600, px: 3 }}
         >
           Which Pass Do You Hold?
         </Typography>

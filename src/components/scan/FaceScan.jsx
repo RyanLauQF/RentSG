@@ -27,6 +27,7 @@ export default function FaceScan() {
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: 'h5.fontSize',
+            color: 'primary.main',
           }}
         >
           Scan Your Face
