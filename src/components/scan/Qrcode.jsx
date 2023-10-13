@@ -8,8 +8,8 @@ export default function QrScanner() {
   const navigate = useNavigate();
   const [result, setResult] = useState('');
   const { ref } = useZxing({
-    onDecodeResult(result) {
-      setResult(result.getText());
+    onDecodeResult(qrData) {
+      setResult(qrData.getText());
       navigate('verifyQr');
     },
     constraints: {
@@ -17,13 +17,19 @@ export default function QrScanner() {
       video: {
         facingMode: 'environment',
         width: 380,
-        height: 380,
+        height: 650,
       },
     },
   });
 
   return (
-    <Stack spacing={2} direction="column" align-items="center" mx="auto" mt={6}>
+    <Stack
+      spacing={2}
+      direction="column"
+      align-items="center"
+      mx="20px"
+      mt="50px"
+    >
       <Stack item>
         <Box
           sx={{
@@ -36,7 +42,7 @@ export default function QrScanner() {
           Scan Tenant's QR
         </Box>
       </Stack>
-      <Stack item>
+      <Stack item borderRadius={3} overflow="hidden">
         <Box
           sx={{
             display: 'flex',
@@ -50,7 +56,7 @@ export default function QrScanner() {
             sx={{
               height: '300px',
               width: '300px',
-              border: '3px dashed grey',
+              border: '3px dashed white',
               position: 'absolute',
             }}
           />
