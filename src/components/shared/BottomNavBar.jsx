@@ -2,11 +2,12 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import * as React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-export default function BotttomNavBar({ account }) {
-  const [value, setValue] = useState(0); // State to track the selected icon
+export default function BottomNavBar({ account }) {
+  const location = useLocation();
+  const [value, setValue] = React.useState(location.pathname); // Initialize with the current route
 
   return (
     <BottomNavigation
@@ -25,12 +26,14 @@ export default function BotttomNavBar({ account }) {
     >
       <BottomNavigationAction
         label="Home"
+        value={`/${account}`}
         icon={<HomeIcon />}
         component={Link}
         to={`/${account}`}
       />
       <BottomNavigationAction
         label="Profile"
+        value={`/${account}/profile`}
         icon={<PersonIcon />}
         component={Link}
         to={`/${account}/profile`}

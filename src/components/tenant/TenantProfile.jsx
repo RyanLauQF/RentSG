@@ -5,7 +5,7 @@ import * as React from 'react';
 import tenantsData from '../../assets/tenants.json';
 import BotButton from '../shared/BotButton';
 import BotttomNavBar from '../shared/BottomNavBar';
-import TenantProfileDets from '../shared/TenantProfileDets';
+import TenantProfileDets from './components/TenantProfileDets';
 
 export default function TenantProfilePage() {
   const tenantID = '000'; // placeholder

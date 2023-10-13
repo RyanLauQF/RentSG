@@ -1,5 +1,3 @@
-// import { useNavigate } from 'react-router-dom';
-// import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -13,34 +11,38 @@ import * as React from 'react';
 import colourConverter from '../../shared/ColourConverter';
 import timeDiffConverter from '../../shared/TimeDifferenceConverter';
 
-const ResidenceStatusTheme = styled(Paper)(({ colour, children }) => ({
+const ResidenceStatusTheme = styled(Paper)(({ colour }) => ({
   display: 'flex',
-  alignItems: 'center',
+  textAlign: 'center',
   justifyContent: 'center',
   backgroundColor: colour,
-  height: 60,
-  children,
+  padding: '13px',
+  height: 80,
 }));
 
-export default function ResidenceStatus({ leaseExpiry, residence }) {
-  // const ownerID = '000'; // placeholder
-  // const owner = ownersData.owners[ownerID];
+export default function ResidenceStatus({ passExpiry, leaseExpiry, residence }) {
+  const timeDiffPass = timeDiffConverter(passExpiry);
+  const timeDiffLease = timeDiffConverter(leaseExpiry);
 
-  const timeDifference = timeDiffConverter(leaseExpiry);
-  const validResidence = timeDifference >= 0;
+  let timeDifference;
+  if (timeDiffPass < timeDiffLease) {
+    timeDifference = timeDiffPass;
+  } else {
+    timeDifference = timeDiffLease;
+  }
   const colour = colourConverter(timeDifference);
   let daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
   const monthsRemain = Math.floor(daysRemain / 30);
   if (daysRemain <= 0) {
     daysRemain = 0;
   }
-
+  
   return (
     <Card sx={{ borderRadius: '10px', m: 2, px: 1 }}>
       <CardContent>
         <Typography variant="h6">Residence Status</Typography>
         <Divider sx={{ borderBottomWidth: 2, borderColor: 'primary.main' }} />
-        {validResidence ? (
+        {residence !== 'NULL' ? (
           <Box>
             <Box px={1} py={1.2}>
               <Typography variant="subtitle2">Address:</Typography>
@@ -50,22 +52,38 @@ export default function ResidenceStatus({ leaseExpiry, residence }) {
               <Typography variant="subtitle2">End of Lease:</Typography>
               <Typography variant="body1">{leaseExpiry}</Typography>
             </Box>
-            {daysRemain === 0 ? (
-              <ResidenceStatusTheme
-                colour={colour}
-                children="Please move out now."
-              />
-            ) : daysRemain <= 90 ? (
-              <ResidenceStatusTheme
-                colour={colour}
-                children={`${daysRemain} days remaining`}
-              />
-            ) : (
-              <ResidenceStatusTheme
-                colour={colour}
-                children={`${monthsRemain} months remaining`}
-              />
-            )}
+            {(() => {
+              if (timeDiffPass <= 0) {
+                return (
+                  <ResidenceStatusTheme
+                    colour={colour}
+                    children="Pass expired, please move out now."
+                  />
+                );
+              }
+              if (daysRemain === 0) {
+                return (
+                  <ResidenceStatusTheme
+                    colour={colour}
+                    children="Please move out now."
+                  />
+                );
+              }
+              if (daysRemain <= 90) {
+                return (
+                  <ResidenceStatusTheme
+                    colour={colour}
+                    children={`${daysRemain} days remaining`}
+                  />
+                );
+              }
+              return (
+                <ResidenceStatusTheme
+                  colour={colour}
+                  children={`${monthsRemain} months remaining`}
+                />
+              );
+            })()}
           </Box>
         ) : (
           <Box px={1} py={1.2}>

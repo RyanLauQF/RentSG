@@ -1,6 +1,7 @@
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { Chip } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
@@ -32,7 +33,7 @@ export default function PersonCard({ personID }) {
   }
 
   const name = `${tenant.firstName} ${tenant.lastName}`;
-  
+
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/owner/tenant');
@@ -66,17 +67,34 @@ export default function PersonCard({ personID }) {
             <Typography variant="body1" fontWeight="bold" color="#002d40">
               {name}
             </Typography>
-            <Typography variant="subtitle2" color="#002d40">
-              Expiry date: {tenant.passExpiry}
-            </Typography>
             {daysRemain === 0 ? (
-              <Chip
-                label={<Typography fontWeight="bold">End contract</Typography>}
-              />
+              <Box>
+                <Typography variant="subtitle2" color="#002d40">
+                  Expiry date:
+                </Typography>
+                <Typography variant="subtitle2" color="#002d40">
+                  {tenant.passExpiry}
+                </Typography>
+                <Chip
+                  label={
+                    <Typography fontWeight="bold">End contract</Typography>
+                  }
+                />
+              </Box>
             ) : daysRemain <= 90 ? (
-              <Chip label={`${daysRemain} days remaining`} />
+              <Box>
+                <Typography variant="subtitle2" color="#002d40">
+                  Expiry date: {tenant.passExpiry}
+                </Typography>
+                <Chip label={`${daysRemain} days remaining`} />
+              </Box>
             ) : (
-              <Chip label={`${monthsRemain} months remaining`} />
+              <Box>
+                <Typography variant="subtitle2" color="#002d40">
+                  Expiry date: {tenant.passExpiry}
+                </Typography>
+                <Chip label={`${monthsRemain} months remaining`} />
+              </Box>
             )}
           </Stack>
           {daysRemain === 0 ? (

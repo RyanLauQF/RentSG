@@ -27,7 +27,7 @@ export default function HomeOwnerPage({ tenant }) {
             <Stack
               direction="row"
               justifyContent="space-between"
-              alignItems="center"
+              alignItems="flex-end"
             >
               <Typography
                 variant="body2"

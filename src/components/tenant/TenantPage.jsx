@@ -8,7 +8,6 @@ import Header from '../shared/Header';
 import PassStatus from './components/PassStatus';
 import ResidenceStatus from './components/ResidenceStatus';
 
-
 export default function TenantPage() {
   const tenantID = '000'; // placeholder
   const tenant = tenantsData.tenants[tenantID];
@@ -19,6 +18,7 @@ export default function TenantPage() {
       <Box sx={{ width: '98%', px: 2 }} flex={1} overflow="auto">
         <PassStatus passExpiry={tenant.passExpiry} />
         <ResidenceStatus
+          passExpiry={tenant.passExpiry}
           leaseExpiry={tenant.leaseExpiry}
           residence={tenant.residence}
         />
