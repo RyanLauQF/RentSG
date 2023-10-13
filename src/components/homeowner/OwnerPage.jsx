@@ -11,7 +11,7 @@ import Header from '../shared/Header';
 import AddPerson from './components/AddPerson';
 import PersonCard from './components/PersonCard';
 
-export default function HomeOwnerPage() {
+export default function HomeOwnerPage({ tenant }) {
   const ownerID = '000'; // placeholder
   const owner = ownersData.owners[ownerID];
 
@@ -27,7 +27,7 @@ export default function HomeOwnerPage() {
             <Stack
               direction="row"
               justifyContent="space-between"
-              alignItems="end"
+              alignItems="center"
             >
               <Typography
                 variant="body2"

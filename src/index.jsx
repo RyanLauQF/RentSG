@@ -7,6 +7,7 @@ import App from './App';
 import LoginPage from './components/auth/LoginPage';
 import HomeOwnerPage from './components/homeowner/OwnerPage';
 import OwnerProfile from './components/homeowner/OwnerProfile';
+import OwnerTenantPage from './components/homeowner/OwnerTenantPage';
 import VerifyQr from './components/loading/VerifyQr';
 import Face2 from './components/scan/Face2';
 import Qrcode from './components/scan/Qrcode';
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: 'tenant/onboard/',
         element: <TenantOnboarding />,
+      },
+      {
+        path: 'owner/tenant/',
+        element: <OwnerTenantPage />,
       },
     ],
   },

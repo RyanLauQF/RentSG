@@ -4,9 +4,13 @@
       "firstName": "Bob",
       "lastName": "Tan",
       "passExpiry": "2024-07-25",
-      "leaseExpiry": "2024-06-25",
+      "leaseExpiry": "2023-10-25",
       "imageUrl": "https://onecms-res.cloudinary.com/image/upload/s--4SDj7ump--/f_auto,q_auto/v1/mediacorp/tdy/image/2022/07/24/20220617_llt_uncle_raymond-3.jpg?itok=PT3Sdazu",
-      "residence": "Binjai Hall #19"
+      "residence": "Binjai Hall #19",
+      "passType": "FIN",
+      "contactNo": "81234567",
+      "nationality": "American",
+      "finNumber": "S12345678A"
     },
     "001": {
       "firstName": "Alice",
@@ -14,7 +18,11 @@
       "passExpiry": "2029-09-28",
       "leaseExpiry": "2029-09-28",
       "imageUrl": "https://s.yimg.com/ny/api/res/1.2/IEGNapdUW_qWZk7QNlUH3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEwMjQ7aD03Njg-/https://media.zenfs.com/en-SG/homerun/rice_643/1d5468dbcffaa324d7004196cefa28dd",
-      "residence": "Tanjong Hall #20"
+      "residence": "Tanjong Hall #20",
+      "passType": "Employment Pass",
+      "contactNo": "82345671",
+      "nationality": "Australian",
+      "finNumber": "S12345678A"
     },
     "002": {
       "firstName": "Muthu",
@@ -22,23 +30,35 @@
       "passExpiry": "2023-11-16",
       "leaseExpiry": "2024-10-11",
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxBqFSUq0QiZoLQZ1iE2oVwqdhWWpc2RWn7HkYHLi_w0-rbhKX8LPy6VJog16qUh68dA&usqp=CAU",
-      "residence": "Binjai Hall #19"
+      "residence": "Binjai Hall #19",
+      "passType": "S Pass",
+      "contactNo": "87654321",
+      "nationality": "Indian",
+      "finNumber": "S12345678A"
     },
     "003": {
-      "firstName": "Samantha",
+      "firstName": "Sotteok",
       "lastName": "Kim",
       "passExpiry": "2023-09-11",
       "leaseExpiry": "2028-10-10",
       "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
-      "residence": "Binjai Hall #19"
+      "residence": "Binjai Hall #19",
+      "passType": "LTVP",
+      "contactNo": "87654321",
+      "nationality": "Korean",
+      "finNumber": "S12345678A"
     },
     "004": {
-      "firstName": "Rachel",
+      "firstName": "Hotteok",
       "lastName": "Kim",
       "passExpiry": "2028-10-10",
       "leaseExpiry": "2028-10-10",
       "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
-      "residence": "Banyan Hall #21"
+      "residence": "Banyan Hall #21",
+      "passType": "LTVP",
+      "contactNo": "86543217",
+      "nationality": "Korean",
+      "finNumber": "S12345678A"
     }
   }
 }

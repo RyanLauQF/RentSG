@@ -10,54 +10,33 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import tenantsData from '../../../assets/tenants.json';
-// calculate time difference from earliest expiry date to current date
-const dateConverter = (passExpiry, leaseExpiry) => {
-  const currentDate = new Date();
-  const passExpiryDate = new Date(passExpiry);
-  const leaseExpiryDate = new Date(leaseExpiry);
-  let timeDifference;
-  // Calculate the time difference in milliseconds
-  if (passExpiry < leaseExpiry) {
-    timeDifference = passExpiryDate - currentDate;
-  } else {
-    timeDifference = leaseExpiryDate - currentDate;
-  }
-  return timeDifference;
-};
-const colorConverter = (timeDifference) => {
-  // Calculate the time thresholds in milliseconds
-  const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000; // 30 days
-  const threeMonthsInMillis = 3 * 30 * 24 * 60 * 60 * 1000; // 180 days
-
-  // if (timeDifference < 0) {
-  //   // If the provided date is in the past
-  //   return '#ff8787'; // Expired (in red)
-  // }
-  if (timeDifference <= oneMonthInMillis) {
-    return '#ff8787'; // Less than 1 month away (in red)
-  }
-  if (timeDifference <= threeMonthsInMillis) {
-    return '#ffd43b'; // Between 1 and 3 months away (in orange)
-  }
-  return '#a7dca5';
-  // return '#69db7c'; // More than 3 months away (in green)
-};
+import colourConverter from '../../shared/ColourConverter';
+import timeDiffConverter from '../../shared/TimeDifferenceConverter';
 
 export default function PersonCard({ personID }) {
   const tenant = tenantsData.tenants[personID];
-  const timeDifference = dateConverter(tenant.passExpiry, tenant.leaseExpiry);
-  const colour = colorConverter(timeDifference);
+  const timeDiffPass = timeDiffConverter(tenant.passExpiry);
+  const timeDiffLease = timeDiffConverter(tenant.leaseExpiry);
+
+  let timeDifference;
+  if (timeDiffPass < timeDiffLease) {
+    timeDifference = timeDiffPass;
+  } else {
+    timeDifference = timeDiffLease;
+  }
+  const colour = colourConverter(timeDifference);
   let daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
   const monthsRemain = Math.floor(daysRemain / 30);
   if (daysRemain <= 0) {
     daysRemain = 0;
   }
-  const navigate = useNavigate();
-  const navigateToViewProfile = () => {
-    navigate('/tenant');
-  };
 
   const name = `${tenant.firstName} ${tenant.lastName}`;
+  
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/owner/tenant');
+  };
 
   return (
     <Card
@@ -67,6 +46,7 @@ export default function PersonCard({ personID }) {
         borderRadius: '10px',
       }}
       height="100vh"
+      onClick={handleClick}
     >
       <CardContent>
         <Stack direction="row" sx={{ alignItems: 'center' }}>
