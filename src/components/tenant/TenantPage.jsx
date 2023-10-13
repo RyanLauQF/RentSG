@@ -34,7 +34,7 @@ export default function TenantPage() {
         <PassStatus pass={tenant.pass.valid} />
         <ResidenceStatus residence={tenant.residence} />
         <BotButton />
-        <BottomNavBar />
+        <BottomNavBar account="tenant" />
       </Box>
     </Box>
   );

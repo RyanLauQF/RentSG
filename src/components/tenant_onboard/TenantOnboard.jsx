@@ -62,10 +62,10 @@ const passData = [
     category: 'Skilled and Semi-skilled',
     passTypes: [
       'S Pass',
-      'Work Permit for Migrant worker',
-      'Work Permit for Migrant domestic worker',
-      'Work Permit for Confinement nanny',
-      'Work Permit for Performing artiste',
+      'Work Permit for Migrant Worker',
+      'Work Permit for Migrant Domestic Worker',
+      'Work Permit for Confinement Nanny',
+      'Work Permit for Performing Artiste',
     ],
   },
   {
@@ -223,7 +223,7 @@ export default function TenantOnboarding() {
           }}
           color="primary"
           component={Link}
-          to="/qr"
+          to="/tenant/onboard/scan/pass"
         >
           <NavigateNextIcon fontSize="large" />
         </Fab>
