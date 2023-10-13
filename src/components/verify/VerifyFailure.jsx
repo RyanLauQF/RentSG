@@ -13,16 +13,18 @@ export default function VerifyFailure() {
   return (
     <Stack
       spacing={2}
+      display="flex"
       direction="column"
       alignItems="center"
       justifyContent="center"
-      mt={4}
+      mt={6}
     >
       <Box
         sx={{
           textAlign: 'center',
           fontWeight: 'bold',
           fontSize: 'h5.fontSize',
+          color: '#1aa6b7',
         }}
       >
         We could not verify you.
@@ -32,11 +34,11 @@ export default function VerifyFailure() {
 
       <Chip
         label="Contact Support"
-        color="primary"
+        sx={{ bgcolor: '#1aa6b7', color: '#d9ecf2' }}
         href="https://www.mom.gov.sg/faq/work-pass-general/how-do-i-check-if-a-work-pass-is-valid"
         clickable
         mx="auto"
-        size="medium"
+        size="large"
       />
     </Stack>
   );

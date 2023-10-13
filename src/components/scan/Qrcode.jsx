@@ -23,19 +23,14 @@ export default function QrScanner() {
   });
 
   return (
-    <Stack
-      spacing={2}
-      direction="column"
-      align-items="center"
-      mx="auto"
-      mt="50"
-    >
+    <Stack spacing={2} direction="column" align-items="center" mx="auto" mt={6}>
       <Stack item>
         <Box
           sx={{
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: 'h5.fontSize',
+            color: 'primary.main',
           }}
         >
           Scan Tenant's QR

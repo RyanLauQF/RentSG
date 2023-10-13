@@ -5,13 +5,14 @@ import Webcam from 'react-webcam';
 
 export default function Face2() {
   return (
-    <Stack spacing={2} direction="column" align-items="center">
+    <Stack spacing={2} direction="column" align-items="center" my={6}>
       <Stack item>
         <Box
           sx={{
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: 'h5.fontSize',
+            color: 'primary.main',
           }}
         >
           Scan Tenant's Face
