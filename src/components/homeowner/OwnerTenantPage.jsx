@@ -2,9 +2,7 @@ import { Avatar, Divider } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-
 import { useParams } from 'react-router-dom';
-
 
 import tenantsData from '../../assets/tenants.json';
 import TenantDetail from '../shared/TenantDetail';
@@ -68,7 +66,6 @@ function TenantProfileDets({ tenant }) {
 }
 
 export default function OwnerTenantPage() {
-
   const { tenantId } = useParams();
   const tenant = tenantsData.tenants[tenantId];
 

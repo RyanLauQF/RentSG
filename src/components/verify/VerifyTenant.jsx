@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import tenantsData from '../../assets/tenants.json';
 import FunctionButton from '../homeowner/components/FunctionButton';
-import TenantProfileDets from '../shared/TenantProfileDets';
+import TenantProfileDets from '../tenant/components/TenantProfileDets';
 
 export default function VerifyTenant() {
   let tenantID = '000'; // placeholder
@@ -15,7 +15,7 @@ export default function VerifyTenant() {
     if (result) {
       tenantID = result;
       tenant = tenantsData.tenants[tenantID];
-      console.log(tenantID);
+      // console.log(tenantID);
     }
   }
 
