@@ -1,15 +1,15 @@
 {
   "tenants": {
     "000": {
-      "firstName": "Ali",
-      "lastName": "Pei",
-      "passExpiry": "2023-11-16",
-      "leaseExpiry": "2024-10-11",
-      "imageUrl": "https://res.klook.com/image/upload/fl_lossy.progressive/q_auto/c_fill,w_750/w_1200/blogen/2018/04/Ice-Cream-Uncle-3.jpg",
+      "firstName": "Sotteok",
+      "lastName": "Kim",
+      "passExpiry": "2023-09-11",
+      "leaseExpiry": "2028-10-10",
+      "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
       "residence": "Binjai Hall #19",
-      "passType": "S Pass",
+      "passType": "LTVP",
       "contactNo": "87654321",
-      "nationality": "Indian",
+      "nationality": "Korean",
       "finNumber": "S12345678A"
     },
     "001": {
@@ -37,15 +37,15 @@
       "finNumber": "S12345678A"
     },
     "003": {
-      "firstName": "Sotteok",
-      "lastName": "Kim",
-      "passExpiry": "2023-09-11",
-      "leaseExpiry": "2028-10-10",
-      "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
+      "firstName": "Ali",
+      "lastName": "Pei",
+      "passExpiry": "2023-11-16",
+      "leaseExpiry": "2024-10-11",
+      "imageUrl": "https://res.klook.com/image/upload/fl_lossy.progressive/q_auto/c_fill,w_750/w_1200/blogen/2018/04/Ice-Cream-Uncle-3.jpg",
       "residence": "Binjai Hall #19",
-      "passType": "LTVP",
+      "passType": "S Pass",
       "contactNo": "87654321",
-      "nationality": "Korean",
+      "nationality": "Indian",
       "finNumber": "S12345678A"
     },
     "004": {
