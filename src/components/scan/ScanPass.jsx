@@ -5,13 +5,14 @@ import Webcam from 'react-webcam';
 
 export default function ScanPass() {
   return (
-    <Stack spacing={4} direction="column" align-items="center" m={2}>
+    <Stack spacing={4} direction="column" align-items="center" mx={2} my={6}>
       <Stack item>
         <Box
           sx={{
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: 'h5.fontSize',
+            color: 'primary.main',
           }}
         >
           Scan Your Pass

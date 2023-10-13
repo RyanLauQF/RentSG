@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import Stack from '@mui/material/Stack';
 import React from 'react';
@@ -28,7 +29,16 @@ function VerifyQr() {
         align-items="center"
       >
         <Stack item textAlign="center">
-          <h1>Verifying profile...</h1>
+          <Typography
+            variant="h6"
+            style={{
+              color: '#1aa6b7',
+              fontWeight: 'bold',
+            }}
+          >
+            {' '}
+            Verifying profile...
+          </Typography>
         </Stack>
         <Stack item>
           <CircularProgress
