@@ -11,7 +11,7 @@ import Header from '../shared/Header';
 import AddPerson from './components/AddPerson';
 import PersonCard from './components/PersonCard';
 
-export default function HomeOwnerPage({ tenant }) {
+export default function HomeOwnerPage() {
   const ownerID = '000'; // placeholder
   const owner = ownersData.owners[ownerID];
 

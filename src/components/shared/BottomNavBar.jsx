@@ -18,6 +18,7 @@ export default function BottomNavBar({ account }) {
         left: 0,
         right: 0,
         backgroundColor: '#d9ecf2',
+        height: 65,
       }}
       value={value}
       onChange={(event, newValue) => {
