@@ -56,7 +56,7 @@ export default function LoginPage() {
                 }}
               >
                 <img
-                  src="src/assets/home_icon.jpg"
+                  src="/assets/Pictures/home_icon.jpg"
                   alt="home-icon"
                   width="260px"
                 />
@@ -108,8 +108,8 @@ export default function LoginPage() {
                 }}
               >
                 <img
-                  src="src/assets/tenants_icon.png"
-                  alt="home-icon"
+                  src="/assets/Pictures/tenants_icon.png"
+                  alt="tenant-icon"
                   width="250px"
                 />
                 <div
