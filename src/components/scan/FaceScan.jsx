@@ -1,11 +1,26 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 
-export default function Face2() {
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export default function FaceScan() {
+  const navigate = useNavigate();
+
+  delay(5000).then(() => {
+    navigate('/tenant/onboard/verify/success/');
+  });
+
   return (
-    <Stack spacing={2} direction="column" align-items="center">
+    <Stack
+      spacing={4}
+      direction="column"
+      m={2}
+      paddingTop={5}
+      align-items="center"
+    >
       <Stack item>
         <Box
           sx={{
@@ -14,7 +29,7 @@ export default function Face2() {
             fontSize: 'h5.fontSize',
           }}
         >
-          Scan Tenant's Face
+          Scan Your Face
         </Box>
       </Stack>
       <Stack item>

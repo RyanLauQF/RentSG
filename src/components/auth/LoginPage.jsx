@@ -42,7 +42,7 @@ export default function LoginPage() {
         </Link>
       </Grid>
       <Grid item>
-        <Link to="/tenant" style={{ textDecoration: 'none' }}>
+        <Link to="tenant/onboard/pass/" style={{ textDecoration: 'none' }}>
           <Card
             sx={{
               display: 'flex',

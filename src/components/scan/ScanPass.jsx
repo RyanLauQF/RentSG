@@ -1,17 +1,33 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export default function ScanPass() {
+  const navigate = useNavigate();
+
+  delay(5000).then(() => {
+    navigate('/tenant/onboard/register/');
+  });
+
   return (
-    <Stack spacing={4} direction="column" align-items="center" m={2}>
+    <Stack
+      spacing={4}
+      direction="column"
+      align-items="center"
+      m={2}
+      paddingTop={10}
+    >
       <Stack item>
         <Box
           sx={{
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: 'h5.fontSize',
+            color: 'primary.main',
           }}
         >
           Scan Your Pass
@@ -29,7 +45,7 @@ export default function ScanPass() {
           <Webcam
             mirrored="true"
             width={350} // Adjust the preferred width as needed
-            height={197} // Adjust the preferred height as needed
+            height={450} // Adjust the preferred height as needed
             videoConstraints={{
               facingMode: 'environment',
             }}

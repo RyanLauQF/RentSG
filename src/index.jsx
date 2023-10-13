@@ -5,11 +5,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import LoginPage from './components/auth/LoginPage';
+import RegisterForm from './components/auth/RegisterTenant';
 import HomeOwnerPage from './components/homeowner/OwnerPage';
 import OwnerProfile from './components/homeowner/OwnerProfile';
 import OwnerTenantPage from './components/homeowner/OwnerTenantPage';
 import VerifyQr from './components/loading/VerifyQr';
-import Face2 from './components/scan/Face2';
+import FaceScan from './components/scan/FaceScan';
 import Qrcode from './components/scan/Qrcode';
 import ScanPass from './components/scan/ScanPass';
 import TenantPage from './components/tenant/TenantPage';
@@ -43,27 +44,15 @@ const router = createBrowserRouter([
         element: <Qrcode />,
       },
       {
-        path: 'face/',
-        element: <Face2 />,
-      },
-      {
         path: 'qr/verifyQr/',
         element: <VerifyQr />,
       },
       {
-        path: 'qr/verifyQr/success',
-        element: <VerifySuccess />,
-      },
-      {
-        path: 'qr/verifyQr/failure',
+        path: 'qr/verifyQr/failure/',
         element: <VerifyFailure />,
       },
       {
-        path: 'scanPass',
-        element: <ScanPass />,
-      },
-      {
-        path: 'tenant/profile',
+        path: 'tenant/profile/',
         element: <TenantProfilePage />,
       },
       {
@@ -71,12 +60,28 @@ const router = createBrowserRouter([
         element: <OwnerProfile />,
       },
       {
-        path: 'tenant/onboard/',
+        path: 'tenant/onboard/pass/',
         element: <TenantOnboarding />,
       },
       {
         path: 'owner/tenant/',
         element: <OwnerTenantPage />,
+      },
+      {
+        path: 'tenant/onboard/scan/pass/',
+        element: <ScanPass />,
+      },
+      {
+        path: 'tenant/onboard/register/',
+        element: <RegisterForm />,
+      },
+      {
+        path: 'tenant/onboard/scan/face/',
+        element: <FaceScan />,
+      },
+      {
+        path: 'tenant/onboard/verify/success/',
+        element: <VerifySuccess />,
       },
     ],
   },
