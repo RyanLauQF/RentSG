@@ -93,7 +93,7 @@ export default function RegisterForm() {
       >
         <Typography
           fontSize="20px"
-          sx={{ color: 'grey', fontWeight: 600, px: 3 }}
+          sx={{ color: 'primary.main', fontWeight: 600, px: 3 }}
         >
           Confirm Your Pass Details
         </Typography>

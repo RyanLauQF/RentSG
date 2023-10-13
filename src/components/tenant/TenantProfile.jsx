@@ -4,8 +4,8 @@ import * as React from 'react';
 
 import tenantsData from '../../assets/tenants.json';
 import BotButton from '../shared/BotButton';
-import TenantProfileDets from '../shared/TenantProfileDets';
 import BotttomNavBar from '../shared/BottomNavBar';
+import TenantProfileDets from '../shared/TenantProfileDets';
 
 export default function TenantProfilePage() {
   const tenantID = '000'; // placeholder
@@ -19,7 +19,7 @@ export default function TenantProfilePage() {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ pt: 3 }}
+        sx={{ pt: 3, pb: 7 }}
       >
         <Typography variant="body2" sx={{ pt: 1.2 }}>
           Use this to connect with a landlord:

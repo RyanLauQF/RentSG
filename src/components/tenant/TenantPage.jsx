@@ -8,6 +8,7 @@ import Header from '../shared/Header';
 import PassStatus from './components/PassStatus';
 import ResidenceStatus from './components/ResidenceStatus';
 
+
 export default function TenantPage() {
   const tenantID = '000'; // placeholder
   const tenant = tenantsData.tenants[tenantID];

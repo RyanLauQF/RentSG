@@ -2,6 +2,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
 // import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -20,6 +21,7 @@ export default function PassStatus({ passExpiry }) {
         sx={{ px: 3, justifyContent: 'space-between', alignItems: 'center' }}
       >
         <Typography variant="h6">Pass Status </Typography>
+
         {validPass ? (
           <Stack direction="row">
             <Typography sx={{ color: 'green' }}>Valid</Typography>
@@ -32,7 +34,21 @@ export default function PassStatus({ passExpiry }) {
           </Stack>
         )}
       </Stack>
-      <Card sx={{ borderRadius: '10px', height: 150, m: 2 }} />
+      {/* <Card sx={{ borderRadius: '10px', height: 150, m: 2 }} /> */}
+      <Card
+        sx={{
+          borderRadius: '10px',
+          height: 150,
+          m: 2,
+          objectFit: 'cover',
+        }}
+      >
+        <CardMedia
+          component="img"
+          sx={{ height: 140 }}
+          image="../static/tenant_fin.jpg"
+        />
+      </Card>
     </Box>
   );
 }

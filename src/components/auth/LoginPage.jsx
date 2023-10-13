@@ -39,11 +39,13 @@ export default function LoginPage() {
                 borderRadius: 6,
                 minWidth: 280,
                 minHeight: 280,
-                backgroundColor: '#dae4f5',
+                backgroundColor: 'secondary.main',
                 transition: 'transform 0.1s ease-in-out',
+                color: 'primary.main',
                 '&:hover': {
                   transform: 'scale(1.05)',
-                  backgroundColor: '#8fb4f2',
+                  backgroundColor: 'primary.main',
+                  color: 'secondary.main',
                 },
               }}
             >
@@ -71,7 +73,7 @@ export default function LoginPage() {
                       textAlign: 'center',
                       fontWeight: 'bold',
                       fontSize: 'h7.fontSize',
-                      color: 'primary.main',
+                      // color: 'primary.main',
                     }}
                   >
                     Home Owner
@@ -91,11 +93,13 @@ export default function LoginPage() {
                 borderRadius: 6,
                 minWidth: 280,
                 minHeight: 280,
-                backgroundColor: '#dae4f5',
+                backgroundColor: 'secondary.main',
                 transition: 'transform 0.1s ease-in-out',
+                color: 'primary.main',
                 '&:hover': {
                   transform: 'scale(1.05)',
-                  backgroundColor: '#8fb4f2',
+                  backgroundColor: 'primary.main',
+                  color: 'secondary.main',
                 },
               }}
             >
@@ -123,7 +127,7 @@ export default function LoginPage() {
                       textAlign: 'center',
                       fontWeight: 'bold',
                       fontSize: 'h7.fontSize',
-                      color: 'primary.main',
+                      // color: 'primary.main',
                     }}
                   >
                     Tenant
