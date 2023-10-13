@@ -10,7 +10,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import tenantsData from '../../../assets/tenants.json';
-
+// calculate time difference from earliest expiry date to current date
 const dateConverter = (passExpiry, leaseExpiry) => {
   const currentDate = new Date();
   const passExpiryDate = new Date(passExpiry);
@@ -48,6 +48,7 @@ export default function PersonCard({ personID }) {
   const timeDifference = dateConverter(tenant.passExpiry, tenant.leaseExpiry);
   const colour = colorConverter(timeDifference);
   let daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  const monthsRemain = Math.floor(daysRemain / 30);
   if (daysRemain <= 0) {
     daysRemain = 0;
   }
@@ -90,10 +91,12 @@ export default function PersonCard({ personID }) {
             </Typography>
             {daysRemain === 0 ? (
               <Chip
-                label={<Typography fontWeight="bold">Expired</Typography>}
+                label={<Typography fontWeight="bold">End contract</Typography>}
               />
-            ) : (
+            ) : daysRemain <= 90 ? (
               <Chip label={`${daysRemain} days remaining`} />
+            ) : (
+              <Chip label={`${monthsRemain} months remaining`} />
             )}
           </Stack>
           {daysRemain === 0 ? (
