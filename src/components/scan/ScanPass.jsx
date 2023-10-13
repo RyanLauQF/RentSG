@@ -27,6 +27,7 @@ export default function ScanPass() {
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: 'h5.fontSize',
+            color: 'primary.main',
           }}
         >
           Scan Your Pass

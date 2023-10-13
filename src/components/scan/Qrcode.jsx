@@ -36,6 +36,7 @@ export default function QrScanner() {
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: 'h5.fontSize',
+            color: 'primary.main',
           }}
         >
           Scan Tenant's QR
