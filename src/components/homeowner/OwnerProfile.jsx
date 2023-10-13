@@ -9,6 +9,9 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import BotButton from '../shared/BotButton';
+import BottomNavigation from '../shared/BottomNavBar';
+
 const theme = createTheme({
   typography: {
     fontFamily: '"Poppins", sans-serif',
@@ -64,9 +67,9 @@ export default function OwnerProfile() {
   const name = `${landLord.Name} ${landLord.lastName}`;
   return (
     <>
-      <BackButton />
-      <Typography variant="h6" sx={{ px: 3 }}>
-        {name} Profile
+      {/* <BackButton /> */}
+      <Typography variant="h6" sx={{ px: 3, mt: 3 }}>
+        Profile
       </Typography>
       <Divider
         variant="middle"
@@ -100,6 +103,16 @@ export default function OwnerProfile() {
         </Paper>
       </Box>
       <DetailsD details={landLordDetails} />
+      <BotButton />
+      <BottomNavigation
+        // ownerName={owner.firstName}
+        // residenceList={owner.residences}
+        // image={owner.imageUrl}
+        // nric={owner.nric}
+        // nok={owner.nok}
+        // contact={owner.contact}
+        account="owner"
+      />
     </>
   );
 }
