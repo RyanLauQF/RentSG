@@ -36,7 +36,6 @@ export default function PersonCard({ personID }) {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/owner/${personID}/profile`);
-  };
 
   return (
     <Card

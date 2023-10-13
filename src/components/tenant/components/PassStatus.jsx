@@ -1,9 +1,6 @@
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-// import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
@@ -15,7 +12,7 @@ export default function PassStatus({ passExpiry }) {
   const validPass = timeDifference > 0;
 
   return (
-    <Box sx={{ py: 2 }}>
+    <Stack direction="column" sx={{ py: 2 }} spacing={2}>
       <Stack
         direction="row"
         sx={{ px: 3, justifyContent: 'space-between', alignItems: 'center' }}
@@ -34,21 +31,13 @@ export default function PassStatus({ passExpiry }) {
           </Stack>
         )}
       </Stack>
-      {/* <Card sx={{ borderRadius: '10px', height: 150, m: 2 }} /> */}
-      <Card
+      <CardMedia
         sx={{
-          borderRadius: '10px',
-          height: 150,
-          m: 2,
-          objectFit: 'cover',
+          paddingX: '16px',
         }}
-      >
-        <CardMedia
-          component="img"
-          sx={{ height: 140 }}
-          image="../static/tenant_fin.jpg"
-        />
-      </Card>
-    </Box>
+        component="img"
+        image="/assets/tenant_fin.png"
+      />
+    </Stack>
   );
 }

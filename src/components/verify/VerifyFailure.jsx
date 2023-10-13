@@ -3,28 +3,22 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function VerifyFailure() {
-  const navigate = useNavigate();
-  function handleClick() {
-    navigate('/tenant');
-  }
   return (
     <Stack
-      spacing={2}
-      display="flex"
+      spacing={6}
       direction="column"
       alignItems="center"
       justifyContent="center"
-      mt={6}
+      mt={25}
     >
       <Box
         sx={{
           textAlign: 'center',
           fontWeight: 'bold',
           fontSize: 'h5.fontSize',
-          color: '#1aa6b7',
+          color: 'primary.main',
         }}
       >
         We could not verify you.
@@ -34,11 +28,18 @@ export default function VerifyFailure() {
 
       <Chip
         label="Contact Support"
-        sx={{ bgcolor: '#1aa6b7', color: '#d9ecf2' }}
+        color="primary"
+        mx="auto"
         href="https://www.mom.gov.sg/faq/work-pass-general/how-do-i-check-if-a-work-pass-is-valid"
         clickable
-        mx="auto"
-        size="large"
+        style={{
+          width: '200px',
+          height: '50px',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          color: '#fafaf9',
+          boxShadow: '2px',
+        }}
       />
     </Stack>
   );
