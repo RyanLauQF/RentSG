@@ -8,6 +8,7 @@ import LoginPage from './components/auth/LoginPage';
 import RegisterForm from './components/auth/RegisterTenant';
 import HomeOwnerPage from './components/homeowner/OwnerPage';
 import OwnerProfile from './components/homeowner/OwnerProfile';
+import OwnerTenantPage from './components/homeowner/OwnerTenantPage';
 import VerifyQr from './components/loading/VerifyQr';
 import FaceScan from './components/scan/FaceScan';
 import Qrcode from './components/scan/Qrcode';
@@ -47,10 +48,6 @@ const router = createBrowserRouter([
         element: <VerifyQr />,
       },
       {
-        path: 'qr/verifyQr/success/',
-        element: <VerifySuccess />,
-      },
-      {
         path: 'qr/verifyQr/failure/',
         element: <VerifyFailure />,
       },
@@ -65,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: 'tenant/onboard/pass/',
         element: <TenantOnboarding />,
+      },
+      {
+        path: 'owner/tenant/',
+        element: <OwnerTenantPage />,
       },
       {
         path: 'tenant/onboard/scan/pass/',

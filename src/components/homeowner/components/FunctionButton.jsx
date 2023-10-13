@@ -1,33 +1,27 @@
-import AddSharpIcon from '@mui/icons-material/AddSharp';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+// import Card from '@mui/material/Card';
+// import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-export default function AddPerson() {
-  const navigate = useNavigate();
-  const navigateToAddTenant = () => {
-    navigate('/tenant');
-  };
-
+export default function FunctionButton({ performFunction, handleClick }) {
   return (
-    <Box m={2} alignContent="center">
+    <Box px={4} py={1}>
       <Button
         variant="contained"
-        endIcon={<AddSharpIcon />}
         sx={{
           width: '100%',
           bgcolor: '#d9ecf2',
-          height: '4rem',
+          height: '3.5rem',
           boxShadow: 4,
           borderRadius: 6,
-          p: 0.3,
-          alignSelf: 'center',
+          p: 1,
         }}
+        onClick={handleClick}
       >
         <Typography textAlign="center" fontWeight="bold" color="#002d40">
-          Add Tenant
+          {performFunction}
         </Typography>
       </Button>
     </Box>
