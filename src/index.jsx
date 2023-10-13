@@ -9,7 +9,6 @@ import RegisterForm from './components/auth/RegisterTenant';
 import HomeOwnerPage from './components/homeowner/OwnerPage';
 import OwnerProfile from './components/homeowner/OwnerProfile';
 import OwnerTenantPage from './components/homeowner/OwnerTenantPage';
-import VerifyQr from './components/loading/VerifyQr';
 import FaceScan from './components/scan/FaceScan';
 import Qrcode from './components/scan/Qrcode';
 import ScanPass from './components/scan/ScanPass';
@@ -17,7 +16,9 @@ import TenantPage from './components/tenant/TenantPage';
 import TenantProfilePage from './components/tenant/TenantProfile';
 import TenantOnboarding from './components/tenant_onboard/TenantOnboard';
 import VerifyFailure from './components/verify/VerifyFailure';
+import VerifyProfile from './components/verify/VerifyProfile';
 import VerifySuccess from './components/verify/VerifySuccess';
+import VerifyTenant from './components/verify/VerifyTenant';
 import ErrorPage from './errorPage';
 import theme from './theme';
 
@@ -40,12 +41,8 @@ const router = createBrowserRouter([
         element: <HomeOwnerPage />,
       },
       {
-        path: 'qr/',
-        element: <Qrcode />,
-      },
-      {
         path: 'qr/verifyQr/',
-        element: <VerifyQr />,
+        element: <VerifyProfile />,
       },
       {
         path: 'qr/verifyQr/failure/',
@@ -60,12 +57,24 @@ const router = createBrowserRouter([
         element: <OwnerProfile />,
       },
       {
-        path: 'tenant/onboard/pass/',
-        element: <TenantOnboarding />,
-      },
-      {
         path: 'owner/tenant/',
         element: <OwnerTenantPage />,
+      },
+      {
+        path: 'owner/add-tenant/qr',
+        element: <Qrcode />,
+      },
+      {
+        path: 'owner/add-tenant/face',
+        element: <FaceScan account="owner" />,
+      },
+      {
+        path: 'owner/add-tenant/verify',
+        element: <VerifyTenant />,
+      },
+      {
+        path: 'tenant/onboard/pass/',
+        element: <TenantOnboarding />,
       },
       {
         path: 'tenant/onboard/scan/pass/',
@@ -77,7 +86,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'tenant/onboard/scan/face/',
-        element: <FaceScan />,
+        element: <FaceScan account="tenant" />,
       },
       {
         path: 'tenant/onboard/verify/success/',

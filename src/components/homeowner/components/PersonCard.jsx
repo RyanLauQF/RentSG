@@ -32,10 +32,14 @@ export default function PersonCard({ personID }) {
   }
 
   const name = `${tenant.firstName} ${tenant.lastName}`;
-  
+
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/owner/tenant');
+    navigate('/owner/tenant/', {
+      state: {
+        personID,
+      },
+    });
   };
 
   return (

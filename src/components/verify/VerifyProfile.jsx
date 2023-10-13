@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-function VerifyQr() {
+function VerifyProfile() {
   const navigate = useNavigate();
 
   delay(3000).then(() => {
@@ -37,7 +37,7 @@ function VerifyQr() {
             }}
           >
             {' '}
-            Verifying profile...
+            Verifying Profile...
           </Typography>
         </Stack>
         <Stack item>
@@ -54,4 +54,4 @@ function VerifyQr() {
   );
 }
 
-export default VerifyQr;
+export default VerifyProfile;

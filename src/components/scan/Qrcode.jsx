@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useZxing } from 'react-zxing';
 
@@ -11,17 +11,26 @@ export default function QrScanner() {
     onDecodeResult(qrData) {
       setResult(qrData.getText());
       console.log(qrData.getText());
-      // navigate('verifyQr');
     },
     constraints: {
       audio: false,
       video: {
         facingMode: 'environment',
         width: 380,
-        height: 650,
+        height: 600,
       },
     },
   });
+
+  useEffect(() => {
+    if (result) {
+      navigate('/owner/add-tenant/face/', {
+        state: {
+          result,
+        },
+      });
+    }
+  }, [result]);
 
   return (
     <Stack

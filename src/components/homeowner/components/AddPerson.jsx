@@ -3,14 +3,9 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function AddPerson() {
-  const navigate = useNavigate();
-  const navigateToAddTenant = () => {
-    navigate('/tenant');
-  };
-
   return (
     <Box m={2} alignContent="center">
       <Button
@@ -25,6 +20,8 @@ export default function AddPerson() {
           p: 0.3,
           alignSelf: 'center',
         }}
+        component={Link}
+        to="/owner/add-tenant/qr/"
       >
         <Typography textAlign="center" fontWeight="bold" color="#002d40">
           Add Tenant
