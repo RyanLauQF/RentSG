@@ -10,7 +10,8 @@ export default function QrScanner() {
   const { ref } = useZxing({
     onDecodeResult(qrData) {
       setResult(qrData.getText());
-      navigate('verifyQr');
+      console.log(qrData.getText());
+      // navigate('verifyQr');
     },
     constraints: {
       audio: false,

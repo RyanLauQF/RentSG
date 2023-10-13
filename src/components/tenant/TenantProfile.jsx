@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import QRCode from 'react-qr-code';
 
 import tenantsData from '../../assets/tenants.json';
 import BotButton from '../shared/BotButton';
@@ -22,16 +23,12 @@ export default function TenantProfilePage() {
         sx={{ pt: 3, pb: 7 }}
       >
         <Typography variant="body2" sx={{ pt: 1.2 }}>
-          Use this to connect with a landlord:
+          Scan QR to Connect with Homeowners
         </Typography>
-        <Box
-          component="img"
-          sx={{
-            height: 180,
-            width: 180,
-          }}
-          alt="QRcode"
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAAB0CAYAAABUmhYnAAAAAklEQVR4AewaftIAAAKrSURBVO3BQW7kQAwEwUxC//9yrY88NSBIM2sTjDA/WGMUa5RijVKsUYo1SrFGKdYoxRqlWKMUa5RijVKsUYo1SrFGKdYoxRrl4iGVb0rCHSonSThR+aYkPFGsUYo1SrFGuXhZEt6kcqLyTUl4k8qbijVKsUYp1igXH6ZyRxLuSEKn0iWhU3mTyh1J+KRijVKsUYo1ysVwKl0SOpUuCX9ZsUYp1ijFGuXij1O5Q2WyYo1SrFGKNcrFhyXhk5JwonKShCeS8JsUa5RijVKsUS5epvJNKl0STpLQqXRJOFH5zYo1SrFGKdYo5gdrjGKNUqxRijXKxUMqXRI6lS4JnUqXhE6lS8KJSpeEE5UuCXeodEk4UemS8KZijVKsUYo1ysXLVLokdConKl0SOpUnVLok3KHymxVrlGKNUqxRLr4sCXeodEnoVE5U7lB5QuUOlS4JTxRrlGKNUqxRLl6WhE6lS8IdSehU7khCp9KpnCShUzlJwonKJxVrlGKNUqxRLl6mcqLyRBLelIQTlS4JnUqn0iWhS0Kn8qZijVKsUYo1ysVDSfifVO5Iwm+ShDcVa5RijVKsUS4eUvmmJHRJ6FTuUOmS0CWhU3lC5SQJTxRrlGKNUqxRLl6WhDepfFISTlS6JLwpCW8q1ijFGqVYo1x8mModSbhDpUvCHSpdEk5UTpJwkoRPKtYoxRqlWKNc/HFJ6FS6JHQqXRI6lS4JJyp3qHRJeFOxRinWKMUa5eKPU/kklTtUTpLQqXRJeKJYoxRrlGKNcvFhSfikJJyonKicJOFEpUvCiUqXhDcVa5RijVKsUS5epvJNKk8koVPpVLokvEmlS8ITxRqlWKMUaxTzgzVGsUYp1ijFGqVYoxRrlGKNUqxRijVKsUYp1ijFGqVYoxRrlGKNUqxR/gEuBu4UJrCvfQAAAABJRU5ErkJggg=="
+        <QRCode
+          style={{ marginBottom: '4rem', maxWidth: '180px', width: '180px' }}
+          value={tenantID}
+          viewBox="0 0 180 180"
         />
       </Box>
       <Box
