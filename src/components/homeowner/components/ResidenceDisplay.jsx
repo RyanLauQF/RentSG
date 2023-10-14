@@ -13,7 +13,7 @@ export default function ResidenceDisplay({ allResidences }) {
     <>
       {Object.entries(allResidences).map(([key, residence]) => (
         <Card
-          sx={{ backgroundColor: 'secondary.main', m: 2, borderRadius: '10px' }}
+          sx={{ backgroundColor: '#81cdc6', m: 2, borderRadius: '10px' }}
           height="100vh"
         >
           <CardContent>
@@ -35,17 +35,17 @@ export default function ResidenceDisplay({ allResidences }) {
               <Stack direction="column">
                 <Typography
                   variant="body1"
-                  style={{ fontWeight: 'bold', color: '#1aa6b7' }}
+                  style={{ fontWeight: 'bold', color: '#002d40' }}
                 >
                   {residence.Address}
                 </Typography>
                 <Typography variant="subtitle2" style={{ fontWeight: 'bold' }}>
-                  <span style={{ color: '#1aa6b7' }}>Type:</span>{' '}
-                  <span>{residence.Type}</span>
+                  <span style={{ color: '#002d40' }}>Type:</span>{' '}
+                  <span style={{ color: '#ff414d' }}>{residence.Type}</span>
                 </Typography>
                 <Typography variant="subtitle2" style={{ fontWeight: 'bold' }}>
-                  <span style={{ color: '#1aa6b7' }}>Availability:</span>{' '}
-                  <span>{residence.Availability}</span>
+                  <span style={{ color: '#002d40' }}>Availability:</span>{' '}
+                  <span style={{ color: '#ff414d' }}>{residence.Availability}</span>
                 </Typography>
               </Stack>
               <IconButton
