@@ -7,17 +7,30 @@ import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import { onValue, ref } from 'firebase/database';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import tenantsData from '../../../assets/tenants.json';
+import db from '../../../config/firebase';
 import colourConverter from '../../shared/ColourConverter';
 import timeDiffConverter from '../../shared/TimeDifferenceConverter';
 
-export default function PersonCard({ personID }) {
-  const tenant = tenantsData.tenants[personID];
-  const timeDiffPass = timeDiffConverter(tenant.passExpiry);
-  const timeDiffLease = timeDiffConverter(tenant.leaseExpiry);
+export default function PersonCard({ personID, ownerID }) {
+  const [tenantInfo, setTenantInfo] = useState({});
+
+  useMemo(() => {
+    const dbref = ref(db, `/tenants/${personID}`);
+    return onValue(dbref, (snapshot) => {
+      const info = snapshot.val();
+      if (snapshot.exists()) {
+        setTenantInfo(info);
+        console.log(info);
+      }
+    });
+  }, [personID]);
+
+  const timeDiffPass = timeDiffConverter(tenantInfo.passExpiry);
+  const timeDiffLease = timeDiffConverter(tenantInfo.leaseExpiry);
 
   let timeDifference;
   if (timeDiffPass < timeDiffLease) {
@@ -32,15 +45,11 @@ export default function PersonCard({ personID }) {
     daysRemain = 0;
   }
 
-  const name = `${tenant.firstName} ${tenant.lastName}`;
+  const name = `${tenantInfo.firstName} ${tenantInfo.lastName}`;
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/owner/${personID}/profile`, {
-      state: {
-        personID,
-      },
-    });
+    navigate(`/owner/${personID}/profile`);
   };
 
   return (
@@ -49,7 +58,7 @@ export default function PersonCard({ personID }) {
         backgroundColor: colour,
         m: 2,
         borderRadius: '10px',
-        boxShadow: 3
+        boxShadow: 3,
       }}
       height="100vh"
       onClick={handleClick}
@@ -63,8 +72,8 @@ export default function PersonCard({ personID }) {
                 height: 80,
                 marginRight: 2,
               }}
-              alt={tenant.firstName}
-              src={tenant.imageUrl}
+              alt={tenantInfo.firstName}
+              src={tenantInfo.imageUrl}
             />
           </Tooltip>
 
@@ -78,7 +87,7 @@ export default function PersonCard({ personID }) {
                   Expiry date:
                 </Typography>
                 <Typography variant="subtitle2" color="#002d40">
-                  {tenant.passExpiry}
+                  {tenantInfo.passExpiry}
                 </Typography>
                 <Chip
                   label={
@@ -89,14 +98,14 @@ export default function PersonCard({ personID }) {
             ) : daysRemain <= 90 ? (
               <Box>
                 <Typography variant="subtitle2" color="#002d40">
-                  Expiry date: {tenant.passExpiry}
+                  Expiry date: {tenantInfo.passExpiry}
                 </Typography>
                 <Chip label={`${daysRemain} days remaining`} />
               </Box>
             ) : (
               <Box>
                 <Typography variant="subtitle2" color="#002d40">
-                  Expiry date: {tenant.passExpiry}
+                  Expiry date: {tenantInfo.passExpiry}
                 </Typography>
                 <Chip label={`${monthsRemain} months remaining`} />
               </Box>
