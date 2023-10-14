@@ -7,6 +7,7 @@ import * as React from 'react';
 
 import BotButton from '../shared/BotButton';
 import BottomNavigation from '../shared/BottomNavBar';
+import ResidenceDisplay from './components/ResidenceDisplay';
 
 const theme = createTheme({
   typography: {
@@ -28,6 +29,26 @@ const landLord = {
   NRIC: 'S1234567A',
   'Next-of-Kin': 'John Tan',
   'NOK Contact': '81234567',
+};
+const allResidences = {
+  1: {
+    Address: 'Binjai Hall #19',
+    Type: '4-room HDB',
+    Availability: 1,
+    ImgSrc: '/assets/condo1.jpeg',
+  },
+  2: {
+    Address: 'Tanjong Hall #20',
+    Type: '2-room Condo',
+    Availability: 1,
+    ImgSrc: '/assets/hdb1.jpg',
+  },
+  3: {
+    Address: 'Banyan Hall #21',
+    Type: '3-room HDB',
+    Availability: '2',
+    ImgSrc: '/assets/hdb2.jpg',
+  },
 };
 
 const { lastName, imageUrl, residences, ...landLordDetails } = landLord;
@@ -51,7 +72,6 @@ export default function OwnerProfile() {
   const name = `${landLord.Name} ${landLord.lastName}`;
   return (
     <>
-      {/* <BackButton /> */}
       <Typography
         variant="h4"
         sx={{
@@ -73,14 +93,6 @@ export default function OwnerProfile() {
         justifyContent="center"
         sx={{ pt: 3 }}
       >
-        {/* <Paper
-          sx={{
-            width: 128,
-            height: 128,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}> */}
-
         <Avatar
           sx={{
             width: 128,
@@ -91,19 +103,14 @@ export default function OwnerProfile() {
           alt={landLord.firstName}
           src={landLord.imageUrl}
         />
-        {/* </Paper> */}
       </Box>
-      <DetailsD details={landLordDetails} />
+      <Box sx={{ pb: 7 }}>
+        <DetailsD details={landLordDetails} />
+        <ResidenceDisplay allResidences={allResidences} />
+      </Box>
+
       <BotButton />
-      <BottomNavigation
-        // ownerName={owner.firstName}
-        // residenceList={owner.residences}
-        // image={owner.imageUrl}
-        // nric={owner.nric}
-        // nok={owner.nok}
-        // contact={owner.contact}
-        account="owner"
-      />
+      <BottomNavigation account="owner" />
     </>
   );
 }

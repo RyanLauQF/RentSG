@@ -56,15 +56,7 @@ export default function HomeOwnerPage() {
         ))}
       </Box>
       <BotButton />
-      <BottomNavigation
-        // ownerName={owner.firstName}
-        // residenceList={owner.residences}
-        // image={owner.imageUrl}
-        // nric={owner.nric}
-        // nok={owner.nok}
-        // contact={owner.contact}
-        account="owner"
-      />
+      <BottomNavigation account="owner" />
     </>
   );
 }
