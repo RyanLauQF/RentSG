@@ -3,25 +3,31 @@
     "000": {
       "firstName": "James",
       "lastName": "Chugh",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/72/Housing_and_Development_Board_%28logo%29.png",
+      "imageUrl": "https://s.yimg.com/ny/api/res/1.2/IEGNapdUW_qWZk7QNlUH3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEwMjQ7aD03Njg-/https://media.zenfs.com/en-SG/homerun/rice_643/1d5468dbcffaa324d7004196cefa28dd",
       "nric": "S1234567A",
-      "nok": "John Tan, 81234567, Tampines Ave 1 #12-345",
+      "nok": "John Tan",
       "contact": "987654321",
       "residences": [
         {
           "residenceName": "Binjai Hall #19",
           "tenants": ["000", "002", "003"],
-          "type": "4-room HDB"
+          "type": "4-room HDB",
+          "availability": 1,
+          "imgSrc": "/assets/condo1.jpeg"
         },
         {
           "residenceName": "Tanjong Hall #20",
           "tenants": ["001"],
-          "type": "2-room Condo"
+          "type": "2-room Condo",
+          "availability": 1,
+          "imgSrc": "/assets/hdb1.jpg"
         },
         {
           "residenceName": "Banyan Hall #21",
           "tenants": ["004"],
-          "type": "3-room HDB"
+          "type": "3-room HDB",
+          "availability": 2,
+          "imgSrc": "/assets/hdb2.jpg"
         }
       ]
     }

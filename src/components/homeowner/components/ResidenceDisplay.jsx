@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 
 // this to return the residence card
-export default function ResidenceDisplay({ allResidences }) {
+export default function ResidenceDisplay({ residences }) {
   return (
     <>
-      {Object.entries(allResidences).map(([key, residence]) => (
+      {residences.map((residence) => (
         <Card
           sx={{ backgroundColor: '#81cdc6', m: 2, borderRadius: '10px' }}
           height="100vh"
@@ -24,7 +24,7 @@ export default function ResidenceDisplay({ allResidences }) {
               <Tooltip title="Residences">
                 <Avatar sx={{ width: 80, height: 80 }}>
                   <img
-                    src={residence.ImgSrc}
+                    src={residence.imgSrc}
                     alt="condo"
                     width={100}
                     height={80}
@@ -37,15 +37,15 @@ export default function ResidenceDisplay({ allResidences }) {
                   variant="body1"
                   style={{ fontWeight: 'bold', color: '#002d40' }}
                 >
-                  {residence.Address}
+                  {residence.residenceName}
                 </Typography>
                 <Typography variant="subtitle2" style={{ fontWeight: 'bold' }}>
                   <span style={{ color: '#002d40' }}>Type:</span>{' '}
-                  <span style={{ color: '#ff414d' }}>{residence.Type}</span>
+                  <span style={{ color: '#ff414d' }}>{residence.type}</span>
                 </Typography>
                 <Typography variant="subtitle2" style={{ fontWeight: 'bold' }}>
                   <span style={{ color: '#002d40' }}>Availability:</span>{' '}
-                  <span style={{ color: '#ff414d' }}>{residence.Availability}</span>
+                  <span style={{ color: '#ff414d' }}>{residence.availability}</span>
                 </Typography>
               </Stack>
               <IconButton

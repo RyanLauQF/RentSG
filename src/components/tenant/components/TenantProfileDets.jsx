@@ -4,19 +4,19 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
-import TenantDetail from '../../shared/TenantDetail';
+import Detail from '../../shared/Detail';
 
 function TenantDetails({ tenant }) {
   return (
     <Box>
-      <TenantDetail
+      <Detail
         det="Name"
         value={`${tenant.firstName}` + ' ' + `${tenant.lastName}`}
       />
-      <TenantDetail det="FIN Number" value={tenant.finNumber} />
-      <TenantDetail det="Nationality" value={tenant.nationality} />
-      <TenantDetail det="Pass Expiry" value={tenant.passExpiry} />
-      <TenantDetail det="Contact No" value={tenant.contactNo} />
+      <Detail det="FIN Number" value={tenant.finNumber} />
+      <Detail det="Nationality" value={tenant.nationality} />
+      <Detail det="Pass Expiry" value={tenant.passExpiry} />
+      <Detail det="Contact No" value={tenant.contactNo} />
     </Box>
   );
 }
@@ -36,7 +36,7 @@ export default function TenantProfileDets({ tenant }) {
         Profile
       </Typography>
       <Divider
-        sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 5, mx: '2rem' }}
+        sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 3, mx: '2rem' }}
       />
       <Box
         display="flex"

@@ -33,6 +33,7 @@ export default function PersonCard({ personID }) {
   }
 
   const name = `${tenant.firstName} ${tenant.lastName}`;
+
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/owner/${personID}/profile`, {
@@ -48,6 +49,7 @@ export default function PersonCard({ personID }) {
         backgroundColor: colour,
         m: 2,
         borderRadius: '10px',
+        boxShadow: 3
       }}
       height="100vh"
       onClick={handleClick}
