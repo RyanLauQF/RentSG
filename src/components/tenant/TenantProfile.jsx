@@ -1,20 +1,31 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
+import { onValue, ref } from 'firebase/database';
+import React, { useMemo, useState } from 'react';
 import QRCode from 'react-qr-code';
 
-import tenantsData from '../../assets/tenants.json';
+import db from '../../config/firebase';
 import BotButton from '../shared/BotButton';
-import BotttomNavBar from '../shared/BottomNavBar';
+import BottomNavBar from '../shared/BottomNavBar';
 import TenantProfileDets from './components/TenantProfileDets';
 
-export default function TenantProfilePage() {
-  const tenantID = '000'; // placeholder
-  const tenant = tenantsData.tenants[tenantID];
+export default function TenantProfilePage({ tenantID }) {
+  const [tenantInfo, setTenantInfo] = useState({});
+
+  useMemo(() => {
+    const dbref = ref(db, `/tenants/${tenantID}`);
+    return onValue(dbref, (snapshot) => {
+      const info = snapshot.val();
+      if (snapshot.exists()) {
+        setTenantInfo(info);
+        console.log(info);
+      }
+    });
+  }, [tenantID]);
 
   return (
     <>
-      <TenantProfileDets tenant={tenant} />
+      <TenantProfileDets tenant={tenantInfo} />
       <Box
         display="flex"
         flexDirection="column"
@@ -38,7 +49,7 @@ export default function TenantProfilePage() {
         justifyContent="center"
       >
         <BotButton />
-        <BotttomNavBar account="tenant" />
+        <BottomNavBar account="tenant" />
       </Box>
     </>
   );

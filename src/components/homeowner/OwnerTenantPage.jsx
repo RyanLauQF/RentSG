@@ -1,10 +1,11 @@
 import { Avatar, Divider } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
-import { useParams } from 'react-router-dom';
+import { get, onValue, ref, update } from 'firebase/database';
+import React, { useMemo, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import tenantsData from '../../assets/tenants.json';
+import db from '../../config/firebase';
 import Detail from '../shared/Detail';
 import BackButton from './components/BackButton';
 import FunctionButton from './components/FunctionButton';
@@ -65,12 +66,46 @@ function TenantProfileDets({ tenant }) {
   );
 }
 
-export default function OwnerTenantPage() {
+export default function OwnerTenantPage({ ownerID }) {
+  const navigate = useNavigate();
   const { tenantId } = useParams();
-  const tenant = tenantsData.tenants[tenantId];
+  const [tenantInfo, setTenantInfo] = useState({});
+
+  useMemo(() => {
+    const dbref = ref(db, `/tenants/${tenantId}`);
+    return onValue(dbref, (snapshot) => {
+      const info = snapshot.val();
+      if (snapshot.exists()) {
+        setTenantInfo(info);
+      }
+    });
+  }, [tenantId]);
 
   const handleDelete = () => {
-    alert('delete');
+    // delete tenant from owner and navigate back to owner page
+    const residenceId = tenantInfo.residenceID;
+    const ownerRef = ref(db, `/owners/${ownerID}/residences/${residenceId}`);
+
+    get(ownerRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const updateTenants = snapshot.child('tenants').val() || [];
+
+        const tenantIndex = updateTenants.indexOf(tenantId);
+
+        if (tenantIndex !== -1) {
+          // Remove the tenant ID from the array
+          updateTenants.splice(tenantIndex, 1);
+          console.log(updateTenants);
+
+          // Update the 'tenants' field in the database
+          update(ownerRef, {
+            tenants: updateTenants,
+          });
+        }
+      }
+    });
+
+    navigate('/owner');
   };
   const handleTA = () => {
     alert('TA');
@@ -79,7 +114,7 @@ export default function OwnerTenantPage() {
   return (
     <Box sx={{ pb: 7 }}>
       <BackButton />
-      <TenantProfileDets tenant={tenant} />
+      <TenantProfileDets tenant={tenantInfo} />
       <FunctionButton
         performFunction="Delete Tenant"
         handleClick={handleDelete}

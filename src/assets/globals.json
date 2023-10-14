@@ -1,0 +1,107 @@
+{
+  "owners": {
+    "000": {
+      "firstName": "James",
+      "lastName": "Chugh",
+      "imageUrl": "https://s.yimg.com/ny/api/res/1.2/IEGNapdUW_qWZk7QNlUH3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEwMjQ7aD03Njg-/https://media.zenfs.com/en-SG/homerun/rice_643/1d5468dbcffaa324d7004196cefa28dd",
+      "nric": "S1234567A",
+      "nok": "John Tan",
+      "contact": "987654321",
+      "residences": {
+        "000": {
+          "residenceName": "Binjai Hall #19",
+          "tenants": ["000", "002", "003"],
+          "type": "4-room HDB",
+          "availability": 1,
+          "imgSrc": "/assets/condo1.jpeg"
+        },
+        "001": {
+          "residenceName": "Tanjong Hall #20",
+          "tenants": ["001"],
+          "type": "2-room Condo",
+          "availability": 1,
+          "imgSrc": "/assets/hdb1.jpg"
+        },
+        "002": {
+          "residenceName": "Banyan Hall #21",
+          "tenants": ["004"],
+          "type": "3-room HDB",
+          "availability": 2,
+          "imgSrc": "/assets/hdb2.jpg"
+        }
+      }
+    }
+  },
+  "tenants": {
+    "000": {
+      "firstName": "Bob",
+      "lastName": "Tan",
+      "passExpiry": "2023-09-11",
+      "leaseExpiry": "2028-10-10",
+      "imageUrl": "https://onecms-res.cloudinary.com/image/upload/s--4SDj7ump--/f_auto,q_auto/v1/mediacorp/tdy/image/2022/07/24/20220617_llt_uncle_raymond-3.jpg?itok=PT3Sdazu",
+      "residence": "Binjai Hall #19",
+      "residenceID": "000",
+      "passType": "LTVP",
+      "contactNo": "87654321",
+      "nationality": "Korean",
+      "finNumber": "S12345678A",
+      "lastDay": "2028-10-11"
+    },
+    "001": {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "passExpiry": "2029-09-28",
+      "leaseExpiry": "2029-09-28",
+      "imageUrl": "https://www.denofgeek.com/wp-content/uploads/2023/01/Alice-in-Borderland-Season-2.jpg?fit=1920%2C1080",
+      "residence": "Tanjong Hall #20",
+      "residenceID": "001",
+      "passType": "Employment Pass",
+      "contactNo": "82345671",
+      "nationality": "Australian",
+      "finNumber": "S12345678A",
+      "lastDay": "2029-09-28"
+    },
+    "002": {
+      "firstName": "Sotteok",
+      "lastName": "Kim",
+      "passExpiry": "2024-07-25",
+      "leaseExpiry": "2023-10-25",
+      "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
+      "residence": "Binjai Hall #19",
+      "residenceID": "000",
+      "passType": "FIN",
+      "contactNo": "81234567",
+      "nationality": "American",
+      "finNumber": "S12345678A",
+      "lastDay": "2023-10-25"
+    },
+    "003": {
+      "firstName": "Ali",
+      "lastName": "Pei",
+      "passExpiry": "2023-11-16",
+      "leaseExpiry": "2024-10-11",
+      "imageUrl": "https://res.klook.com/image/upload/fl_lossy.progressive/q_auto/c_fill,w_750/w_1200/blogen/2018/04/Ice-Cream-Uncle-3.jpg",
+      "residence": "Binjai Hall #19",
+      "residenceID": "000",
+      "passType": "S Pass",
+      "contactNo": "87654321",
+      "nationality": "Indian",
+      "finNumber": "S12345678A",
+      "lastDay": "2023-11-15"
+    },
+    "004": {
+      "firstName": "Hotteok",
+      "lastName": "Kim",
+      "passExpiry": "2028-10-10",
+      "leaseExpiry": "2028-10-10",
+      "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
+      "residence": "Banyan Hall #21",
+      "residenceID": "002",
+      "passType": "LTVP",
+      "contactNo": "86543217",
+      "nationality": "Korean",
+      "finNumber": "S12345678A",
+      "lastDay": "2028-10-10"
+    }
+  }
+}

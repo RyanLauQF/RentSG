@@ -1,65 +1,89 @@
 import { Divider } from '@mui/material';
 import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import { onValue, ref } from 'firebase/database';
+import React, { useMemo, useState } from 'react';
 
-import ownersData from '../../assets/owner.json';
+import db from '../../config/firebase';
 import BotButton from '../shared/BotButton';
 import BottomNavigation from '../shared/BottomNavBar';
 import Header from '../shared/Header';
 import AddPerson from './components/AddPerson';
 import PersonCard from './components/PersonCard';
 
-export default function HomeOwnerPage() {
-  const ownersDB = JSON.parse(JSON.stringify(ownersData));
-  const ownerID = '000'; // placeholder
-  const owner = ownersDB.owners[ownerID];
+export default function HomeOwnerPage({ ownerID }) {
+  const [ownerInfo, setOwnerInfo] = useState({});
+
+  useMemo(() => {
+    const dbref = ref(db, `/owners/${ownerID}`);
+    return onValue(dbref, (snapshot) => {
+      const info = snapshot.val();
+      if (snapshot.exists()) {
+        setOwnerInfo(info);
+      }
+    });
+  }, [ownerID]);
 
   return (
     <>
-      <Header name={owner.firstName} />
+      <Header name={ownerInfo.firstName} />
       <Divider
         sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 3, mx: '2rem' }}
       />
       <Box sx={{ pb: 7 }}>
-        {owner.residences.map((residence) => (
-          <Box key={residence.residenceName} m="1rem">
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="flex-end"
-            >
-              <Typography
-                variant="body2"
-                marginLeft="1rem"
-                fontWeight="bold"
-                fontSize="h6.fontSize"
-                color="primary.main"
+        {ownerInfo.residences ? (
+          Object.entries(ownerInfo.residences).map(([key, residence]) => (
+            <Box key={residence.residenceName} m="1rem">
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="flex-end"
               >
-                {residence.residenceName}
-              </Typography>
-              <Typography
-                variant="body2"
-                marginRight="1rem"
-                fontWeight="bold"
-                // fontSize=""
-                color="primary.main"
-              >
-                {residence.type}
-              </Typography>
-            </Stack>
-            {residence.tenants.map((tenantID) => (
-              <PersonCard personID={tenantID} />
-            ))}
-            <AddPerson />
+                <Typography
+                  variant="body2"
+                  marginLeft="1rem"
+                  fontWeight="bold"
+                  fontSize="h6.fontSize"
+                  color="primary.main"
+                >
+                  {residence.residenceName}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  marginRight="1rem"
+                  fontWeight="bold"
+                  color="primary.main"
+                >
+                  {residence.type}
+                </Typography>
+              </Stack>
+              {residence.tenants.map((tenantID) => (
+                <PersonCard personID={tenantID} ownerID={ownerID} />
+              ))}
+              <AddPerson />
+            </Box>
+          ))
+        ) : (
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="80vh"
+          >
+            <CircularProgress
+              size={50}
+              sx={{
+                position: 'relative',
+                mx: 'auto',
+              }}
+            />
           </Box>
-        ))}
+        )}
       </Box>
       <BotButton />
-      <BottomNavigation
-        account="owner"
-      />
+      <BottomNavigation account="owner" />
     </>
   );
 }

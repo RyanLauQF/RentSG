@@ -22,6 +22,9 @@ import VerifyTenant from './components/verify/VerifyTenant';
 import ErrorPage from './errorPage';
 import theme from './theme';
 
+const tenantID = '000';
+const ownerID = '000';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,31 +37,23 @@ const router = createBrowserRouter([
       },
       {
         path: 'tenant/',
-        element: <TenantPage />,
-      },
-      {
-        path: 'owner/',
-        element: <HomeOwnerPage />,
-      },
-      {
-        path: 'qr/verifyQr/',
-        element: <VerifyProfile />,
-      },
-      {
-        path: 'qr/verifyQr/failure/',
-        element: <VerifyFailure />,
+        element: <TenantPage tenantID={tenantID} />,
       },
       {
         path: 'tenant/profile/',
-        element: <TenantProfilePage />,
+        element: <TenantProfilePage tenantID={tenantID} />,
+      },
+      {
+        path: 'owner/',
+        element: <HomeOwnerPage ownerID={ownerID} />,
       },
       {
         path: 'owner/profile/',
-        element: <OwnerProfile />,
+        element: <OwnerProfile ownerID={ownerID} />,
       },
       {
         path: 'owner/:tenantId/profile/',
-        element: <OwnerTenantPage />,
+        element: <OwnerTenantPage ownerID={ownerID} />,
       },
       {
         path: 'owner/add-tenant/qr',
@@ -71,6 +66,14 @@ const router = createBrowserRouter([
       {
         path: 'owner/add-tenant/verify',
         element: <VerifyTenant />,
+      },
+      {
+        path: 'qr/verifyQr/',
+        element: <VerifyProfile />,
+      },
+      {
+        path: 'qr/verifyQr/failure/',
+        element: <VerifyFailure />,
       },
       {
         path: 'tenant/onboard/pass/',
@@ -105,3 +108,5 @@ root.render(
     </ThemeProvider>
   </React.StrictMode>
 );
+
+export default tenantID;
