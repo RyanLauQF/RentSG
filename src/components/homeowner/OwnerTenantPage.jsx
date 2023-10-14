@@ -5,22 +5,22 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 
 import tenantsData from '../../assets/tenants.json';
-import TenantDetail from '../shared/TenantDetail';
+import Detail from '../shared/Detail';
 import BackButton from './components/BackButton';
 import FunctionButton from './components/FunctionButton';
 
 function TenantDetails({ tenant }) {
   return (
     <Box>
-      <TenantDetail
+      <Detail
         det="Name"
         value={`${tenant.firstName}` + ' ' + `${tenant.lastName}`}
       />
-      <TenantDetail det="FIN Number" value={tenant.finNumber} />
-      <TenantDetail det="Pass Expiry" value={tenant.passExpiry} />
-      <TenantDetail det="Lease Expiry" value={tenant.leaseExpiry} />
-      <TenantDetail det="Last day in Singapore" value={tenant.lastDay} />
-      <TenantDetail det="Contact No" value={tenant.contactNo} />
+      <Detail det="FIN Number" value={tenant.finNumber} />
+      <Detail det="Pass Expiry" value={tenant.passExpiry} />
+      <Detail det="Lease Expiry" value={tenant.leaseExpiry} />
+      <Detail det="Last day in Singapore" value={tenant.lastDay} />
+      <Detail det="Contact No" value={tenant.contactNo} />
     </Box>
   );
 }
@@ -77,7 +77,7 @@ export default function OwnerTenantPage() {
   };
 
   return (
-    <>
+    <Box sx={{ pb: 7 }}>
       <BackButton />
       <TenantProfileDets tenant={tenant} />
       <FunctionButton
@@ -88,6 +88,6 @@ export default function OwnerTenantPage() {
         performFunction="Tenancy Agreement"
         handleClick={handleTA}
       />
-    </>
+    </Box>
   );
 }

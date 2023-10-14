@@ -5,9 +5,11 @@ import { createTheme } from '@mui/material/styles'; // Import ThemeProvider from
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
+import ownersData from '../../assets/owner.json';
 import BotButton from '../shared/BotButton';
 import BottomNavigation from '../shared/BottomNavBar';
 import ResidenceDisplay from './components/ResidenceDisplay';
+import Detail from '../shared/Detail';
 
 const theme = createTheme({
   typography: {
@@ -20,56 +22,24 @@ const theme = createTheme({
   },
 });
 
-const landLord = {
-  Name: 'Land',
-  lastName: 'lord',
-  imageUrl:
-    'https://s.yimg.com/ny/api/res/1.2/IEGNapdUW_qWZk7QNlUH3A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEwMjQ7aD03Njg-/https://media.zenfs.com/en-SG/homerun/rice_643/1d5468dbcffaa324d7004196cefa28dd',
-  residences: ['Binjai Hall #19', 'Tanjong Hall #20', 'Banyan Hall #21'],
-  NRIC: 'S1234567A',
-  'Next-of-Kin': 'John Tan',
-  'NOK Contact': '81234567',
-};
-const allResidences = {
-  1: {
-    Address: 'Binjai Hall #19',
-    Type: '4-room HDB',
-    Availability: 1,
-    ImgSrc: '/assets/condo1.jpeg',
-  },
-  2: {
-    Address: 'Tanjong Hall #20',
-    Type: '2-room Condo',
-    Availability: 1,
-    ImgSrc: '/assets/hdb1.jpg',
-  },
-  3: {
-    Address: 'Banyan Hall #21',
-    Type: '3-room HDB',
-    Availability: '2',
-    ImgSrc: '/assets/hdb2.jpg',
-  },
-};
-
-const { lastName, imageUrl, residences, ...landLordDetails } = landLord;
-
-function DetailsD({ details }) {
+function OwnerDetails({ owner }) {
   return (
-    <>
-      {Object.entries(details).map(([key, value]) => (
-        <Box px={4} py={1.2}>
-          <Typography variant="h6" fontWeight="bold" color="primary.main">
-            {key}:
-          </Typography>
-          <Typography variant="body1">{value}</Typography>
-        </Box>
-      ))}
-    </>
+    <Box>
+      <Detail
+        det="Name"
+        value={`${owner.firstName}` + ' ' + `${owner.lastName}`}
+      />
+      <Detail det="NRIC" value={owner.nric} />
+      <Detail det="Next-of-Kin" value={owner.nok} />
+      <Detail det="Contact No" value={owner.contact} />
+    </Box>
   );
 }
 
 export default function OwnerProfile() {
-  const name = `${landLord.Name} ${landLord.lastName}`;
+  const ownerID = '000'; // placeholder
+  const owner = ownersData.owners[ownerID];
+
   return (
     <>
       <Typography
@@ -84,7 +54,7 @@ export default function OwnerProfile() {
         Profile
       </Typography>
       <Divider
-        sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 5, mx: '2rem' }}
+        sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 3, mx: '2rem' }}
       />
       <Box
         display="flex"
@@ -100,15 +70,14 @@ export default function OwnerProfile() {
             alignContent: 'center',
             color: 'primary.main',
           }}
-          alt={landLord.firstName}
-          src={landLord.imageUrl}
+          alt={owner.firstName}
+          src={owner.imageUrl}
         />
       </Box>
+      <OwnerDetails owner={owner}/>
       <Box sx={{ pb: 7 }}>
-        <DetailsD details={landLordDetails} />
-        <ResidenceDisplay allResidences={allResidences} />
+        <ResidenceDisplay residences={owner.residences} />
       </Box>
-
       <BotButton />
       <BottomNavigation account="owner" />
     </>

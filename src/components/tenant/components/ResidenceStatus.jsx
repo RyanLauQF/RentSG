@@ -18,9 +18,14 @@ const ResidenceStatusTheme = styled(Paper)(({ colour }) => ({
   backgroundColor: colour,
   padding: '13px',
   height: 80,
+  boxShadow: 3,
 }));
 
-export default function ResidenceStatus({ passExpiry, leaseExpiry, residence }) {
+export default function ResidenceStatus({
+  passExpiry,
+  leaseExpiry,
+  residence,
+}) {
   const timeDiffPass = timeDiffConverter(passExpiry);
   const timeDiffLease = timeDiffConverter(leaseExpiry);
 
@@ -36,9 +41,16 @@ export default function ResidenceStatus({ passExpiry, leaseExpiry, residence }) 
   if (daysRemain <= 0) {
     daysRemain = 0;
   }
-  
+
   return (
-    <Card sx={{ borderRadius: '10px', m: 2, px: 1 }}>
+    <Card
+      sx={{
+        borderRadius: '10px',
+        m: 2,
+        px: 1,
+        boxShadow: 3,
+      }}
+    >
       <CardContent>
         <Typography variant="h6">Residence Status</Typography>
         <Divider sx={{ borderBottomWidth: 2, borderColor: 'primary.main' }} />

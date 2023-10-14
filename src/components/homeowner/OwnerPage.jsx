@@ -12,14 +12,15 @@ import AddPerson from './components/AddPerson';
 import PersonCard from './components/PersonCard';
 
 export default function HomeOwnerPage() {
+  const ownersDB = JSON.parse(JSON.stringify(ownersData));
   const ownerID = '000'; // placeholder
-  const owner = ownersData.owners[ownerID];
+  const owner = ownersDB.owners[ownerID];
 
   return (
     <>
       <Header name={owner.firstName} />
       <Divider
-        sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 5, mx: '2rem' }}
+        sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 3, mx: '2rem' }}
       />
       <Box sx={{ pb: 7 }}>
         {owner.residences.map((residence) => (
@@ -56,7 +57,9 @@ export default function HomeOwnerPage() {
         ))}
       </Box>
       <BotButton />
-      <BottomNavigation account="owner" />
+      <BottomNavigation
+        account="owner"
+      />
     </>
   );
 }
