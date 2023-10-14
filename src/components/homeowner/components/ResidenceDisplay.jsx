@@ -11,7 +11,7 @@ import React from 'react';
 export default function ResidenceDisplay({ residences }) {
   return (
     <>
-      {residences.map((residence) => (
+      {Object.entries(residences).map(([key, residence]) => (
         <Card
           sx={{ backgroundColor: '#81cdc6', m: 2, borderRadius: '10px' }}
           height="100vh"
@@ -45,7 +45,9 @@ export default function ResidenceDisplay({ residences }) {
                 </Typography>
                 <Typography variant="subtitle2" style={{ fontWeight: 'bold' }}>
                   <span style={{ color: '#002d40' }}>Availability:</span>{' '}
-                  <span style={{ color: '#ff414d' }}>{residence.availability}</span>
+                  <span style={{ color: '#ff414d' }}>
+                    {residence.availability}
+                  </span>
                 </Typography>
               </Stack>
               <IconButton

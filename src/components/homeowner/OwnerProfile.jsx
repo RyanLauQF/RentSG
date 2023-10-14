@@ -76,7 +76,9 @@ export default function OwnerProfile({ ownerID }) {
       </Box>
       <OwnerDetails owner={ownerInfo} />
       <Box sx={{ pb: 7 }}>
-        <ResidenceDisplay residences={ownerInfo.residences} />
+        {ownerInfo.residences && (
+          <ResidenceDisplay residences={ownerInfo.residences} />
+        )}
       </Box>
       <BotButton />
       <BottomNavigation account="owner" />
