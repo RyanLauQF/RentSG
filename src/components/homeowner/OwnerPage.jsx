@@ -10,8 +10,29 @@ import db from '../../config/firebase';
 import BotButton from '../shared/BotButton';
 import BottomNavigation from '../shared/BottomNavBar';
 import Header from '../shared/Header';
+import timeDiffConverter from '../shared/TimeDifferenceConverter';
 import AddPerson from './components/AddPerson';
 import PersonCard from './components/PersonCard';
+
+function calculateRemainingDays(passExpiry, leaseExpiry) {
+  const timeDiffPass = timeDiffConverter(passExpiry);
+  const timeDiffLease = timeDiffConverter(leaseExpiry);
+  let timeDifference;
+  if (timeDiffPass < timeDiffLease) {
+    timeDifference = timeDiffPass;
+  } else {
+    timeDifference = timeDiffLease;
+  }
+  const daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  console.log(passExpiry, leaseExpiry);
+  return daysRemain;
+}
+
+// .sort(
+//   (a, b) =>
+//     calculateRemainingDays(a.passExpiry, a.leaseExpiry) -
+//     calculateRemainingDays(b.passExpiry, b.leaseExpiry)
+// )
 
 export default function HomeOwnerPage({ ownerID }) {
   const [ownerInfo, setOwnerInfo] = useState({});
@@ -34,7 +55,7 @@ export default function HomeOwnerPage({ ownerID }) {
       />
       <Box sx={{ pb: 7 }}>
         {ownerInfo.residences ? (
-          Object.entries(ownerInfo.residences).map(([key, residence]) => (
+          Object.entries(ownerInfo.residences).map(([id, residence]) => (
             <Box key={residence.residenceName} m="1rem">
               <Stack
                 direction="row"
@@ -62,7 +83,7 @@ export default function HomeOwnerPage({ ownerID }) {
               {residence.tenants.map((tenantID) => (
                 <PersonCard personID={tenantID} ownerID={ownerID} />
               ))}
-              <AddPerson />
+              <AddPerson ownerID={ownerID} residenceID={id} />
             </Box>
           ))
         ) : (

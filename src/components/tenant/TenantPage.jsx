@@ -1,7 +1,12 @@
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import { onValue, ref } from 'firebase/database';
 import React, { useMemo, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import db from '../../config/firebase';
 import BotButton from '../shared/BotButton';
@@ -10,13 +15,20 @@ import Header from '../shared/Header';
 import PassStatus from './components/PassStatus';
 import ResidenceStatus from './components/ResidenceStatus';
 
-export default function TenantPage({ tenantID }) {
+export default function TenantPage() {
+  const navigate = useNavigate();
+
+  const { tenantId } = useParams();
   const [tenantInfo, setTenantInfo] = useState({});
 
-  // const tenantID = '000'; // placeholder
+  const handleChange = (event) => {
+    // DEV ONLY
+    // PROFILE CHANGE
+    navigate(`/tenant/${event.target.value}`);
+  };
 
   useMemo(() => {
-    const dbref = ref(db, `/tenants/${tenantID}`);
+    const dbref = ref(db, `/tenants/${tenantId}`);
     return onValue(dbref, (snapshot) => {
       const info = snapshot.val();
       if (snapshot.exists()) {
@@ -24,10 +36,10 @@ export default function TenantPage({ tenantID }) {
         console.log(info);
       }
     });
-  }, [tenantID]);
+  }, [tenantId]);
 
   return (
-    <Box height="100vh" display="flex" flexDirection="column" sx={{ pb: 7 }}>
+    <>
       <Header name={tenantInfo.firstName} />
       <Divider
         sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 3, mx: '2rem' }}
@@ -40,8 +52,58 @@ export default function TenantPage({ tenantID }) {
           residence={tenantInfo.residence}
         />
         <BotButton />
-        <BottomNavBar account="tenant" />
+        <Box
+          sx={{
+            heighttransform: 'translateZ(0px)',
+            flexGrow: 1,
+            pb: 8
+          }}
+        >
+          <FormControl
+            sx={{
+              position: 'fixed',
+              top: 50,
+              right: 30,
+              minWidth: 100,
+            }}
+            size="small"
+          >
+            <InputLabel sx={{ color: 'white' }} id="demo-select-small-label">
+              Tenant ID
+            </InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={tenantId}
+              label="Tenant"
+              onChange={handleChange}
+              labelstyle={{ color: '#ff0000' }}
+              sx={{
+                color: 'white',
+                '.MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'rgba(0, 0, 0, 0)',
+                },
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'rgba(0, 0, 0, 0)',
+                },
+                '&:hover .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'rgba(0, 0, 0, 0)',
+                },
+                '.MuiSvgIcon-root ': {
+                  fill: 'white !important',
+                },
+              }}
+            >
+              <MenuItem value="000">000</MenuItem>
+              <MenuItem value="001">001</MenuItem>
+              <MenuItem value="002">002</MenuItem>
+              <MenuItem value="003">003</MenuItem>
+              <MenuItem value="004">004</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        <BottomNavBar account="tenant" tenantId={tenantId} />
       </Box>
-    </Box>
+    </>
   );
 }

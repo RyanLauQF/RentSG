@@ -23,7 +23,6 @@ import VerifyTenant from './components/verify/VerifyTenant';
 import ErrorPage from './errorPage';
 import theme from './theme';
 
-const tenantID = '000';
 const ownerID = '000';
 
 const router = createBrowserRouter([
@@ -37,12 +36,12 @@ const router = createBrowserRouter([
         index: true,
       },
       {
-        path: 'tenant/',
-        element: <TenantPage tenantID={tenantID} />,
+        path: 'tenant/:tenantId/',
+        element: <TenantPage />,
       },
       {
-        path: 'tenant/profile/',
-        element: <TenantProfilePage tenantID={tenantID} />,
+        path: 'tenant/:tenantId/profile/',
+        element: <TenantProfilePage />,
       },
       {
         path: 'owner/',
@@ -57,15 +56,15 @@ const router = createBrowserRouter([
         element: <OwnerTenantPage ownerID={ownerID} />,
       },
       {
-        path: 'owner/add-tenant/qr',
+        path: 'owner/add-tenant/:ownerId/:residenceId/qr',
         element: <Qrcode />,
       },
       {
-        path: 'owner/add-tenant/face',
+        path: 'owner/add-tenant/:ownerId/:residenceId/face',
         element: <FaceScan account="owner" />,
       },
       {
-        path: 'owner/add-tenant/verify',
+        path: 'owner/add-tenant/:ownerId/:residenceId/verify',
         element: <VerifyTenant />,
       },
       {
@@ -113,5 +112,3 @@ root.render(
     </ThemeProvider>
   </React.StrictMode>
 );
-
-export default tenantID;
