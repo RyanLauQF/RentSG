@@ -43,7 +43,6 @@ export default function ScanPass() {
           }}
         >
           <Webcam
-            mirrored="true"
             width={350} // Adjust the preferred width as needed
             height={450} // Adjust the preferred height as needed
             videoConstraints={{
