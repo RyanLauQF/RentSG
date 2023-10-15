@@ -1,4 +1,4 @@
-import './chatbot.css';
+// import './chatbot.css';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 
 import {
@@ -11,7 +11,7 @@ import {
 } from '@chatscope/chat-ui-kit-react';
 import React, { useState } from 'react';
 
-const { API_KEY } = import.meta.env;
+const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 const systemMessage = {
   role: 'system',
   // sorry for long prompt, but json was not working :(

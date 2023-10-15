@@ -10,14 +10,14 @@
       "residences": {
         "000": {
           "residenceName": "Binjai Hall #19",
-          "tenants": ["000", "002", "003"],
+          "tenants": ["000", "003"],
           "type": "4-room HDB",
           "availability": 1,
           "imgSrc": "/assets/condo1.jpeg"
         },
         "001": {
           "residenceName": "Tanjong Hall #20",
-          "tenants": ["001"],
+          "tenants": ["001", "002"],
           "type": "2-room Condo",
           "availability": 1,
           "imgSrc": "/assets/hdb1.jpg"
@@ -67,8 +67,8 @@
       "passExpiry": "2024-07-25",
       "leaseExpiry": "2023-10-25",
       "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
-      "residence": "Binjai Hall #19",
-      "residenceID": "000",
+      "residence": "Tanjong Hall #20",
+      "residenceID": "001",
       "passType": "FIN",
       "contactNo": "81234567",
       "nationality": "American",
@@ -97,6 +97,20 @@
       "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
       "residence": "Banyan Hall #21",
       "residenceID": "002",
+      "passType": "LTVP",
+      "contactNo": "86543217",
+      "nationality": "Korean",
+      "finNumber": "S12345678A",
+      "lastDay": "2028-10-10"
+    }, 
+    "005": {
+      "firstName": "John",
+      "lastName": "Corden",
+      "passExpiry": "2028-10-10",
+      "leaseExpiry": "2028-10-10",
+      "imageUrl": "https://i.pinimg.com/550x/73/78/80/7378801425159433775aac513398d7bf.jpg",
+      "residence": "",
+      "residenceID": "",
       "passType": "LTVP",
       "contactNo": "86543217",
       "nationality": "Korean",
