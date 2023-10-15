@@ -1,5 +1,8 @@
-import { Box, CardContent, Grid, Typography } from '@mui/material';
+import { Box, CardActionArea, Grid } from '@mui/material';
 import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -49,37 +52,40 @@ export default function LoginPage() {
                 },
               }}
             >
-              <CardContent
-                sx={{
-                  paddingLeft: 0,
-                  paddingRight: 0,
-                  paddingBottom: 0,
-                  paddingTop: 1,
-                }}
-              >
-                <img
-                  src="/assets/home_icon.jpg"
-                  alt="home-icon"
-                  width="260px"
-                />
-                <div
-                  style={{
-                    display: 'flex',
+              <CardActionArea>
+                <CardContent
+                  sx={{
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                    paddingBottom: 0,
+                    paddingTop: 1,
                     justifyContent: 'center',
+                    display: 'flex',
                   }}
                 >
-                  <Typography
-                    sx={{
-                      textAlign: 'center',
-                      fontWeight: 'bold',
-                      fontSize: 'h7.fontSize',
-                      // color: 'primary.main',
-                    }}
-                  >
-                    Home Owner
-                  </Typography>
-                </div>
-              </CardContent>
+                  <Stack>
+                    <img src="/assets/key.png" alt="home-icon" width="190px" />
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          textAlign: 'center',
+                          fontWeight: 'bold',
+                          fontSize: 'h7.fontSize',
+                          marginTop: 2,
+                          // color: 'primary.main',
+                        }}
+                      >
+                        Home Owner
+                      </Typography>
+                    </div>
+                  </Stack>
+                </CardContent>
+              </CardActionArea>
             </Card>
           </Link>
         </Grid>
@@ -98,24 +104,20 @@ export default function LoginPage() {
                 color: 'primary.main',
                 '&:hover': {
                   transform: 'scale(1.05)',
-                  backgroundColor: 'primary.main',
+                  backgroundColor: '#1aa6b7',
                   color: 'secondary.main',
                 },
               }}
             >
               <CardContent
                 sx={{
-                  paddingLeft: 0,
-                  paddingRight: 0,
+                  paddingLeft: 2,
+                  paddingRight: 2,
                   paddingBottom: 0,
-                  paddingTop: 1,
+                  paddingTop: 2,
                 }}
               >
-                <img
-                  src="/assets/tenants_icon.png"
-                  alt="tenant-icon"
-                  width="250px"
-                />
+                <img src="/assets/tenant.png" alt="tenant-icon" width="250px" />
                 <div
                   style={{
                     display: 'flex',
