@@ -1,12 +1,13 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Webcam from 'react-webcam';
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default function FaceScan({ account }) {
+  const { ownerId, residenceId } = useParams();
   const navigate = useNavigate();
   let result = '';
   const location = useLocation();
@@ -18,7 +19,7 @@ export default function FaceScan({ account }) {
     if (account === 'tenant') {
       navigate('/tenant/onboard/verify/success/');
     } else if (account === 'owner') {
-      navigate('/owner/add-tenant/verify/', {
+      navigate(`/owner/add-tenant/${ownerId}/${residenceId}/verify/`, {
         state: {
           result,
         },

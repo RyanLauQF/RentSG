@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function AddPerson() {
+export default function AddPerson({ ownerID, residenceID }) {
   return (
     <Box m={2} alignContent="center">
       <Button
@@ -21,7 +21,7 @@ export default function AddPerson() {
           alignSelf: 'center',
         }}
         component={Link}
-        to="/owner/add-tenant/qr/"
+        to={`/owner/add-tenant/${ownerID}/${residenceID}/qr/`}
       >
         <Typography textAlign="center" fontWeight="bold" color="#002d40">
           Add Tenant

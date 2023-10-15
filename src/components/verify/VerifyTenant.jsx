@@ -1,26 +1,45 @@
 import { Box, Button, Typography } from '@mui/material';
+import { get, ref, update } from 'firebase/database';
 import * as React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import tenantsData from '../../assets/tenants.json';
+import db from '../../config/firebase';
 import FunctionButton from '../homeowner/components/FunctionButton';
 import TenantProfileDets from '../tenant/components/TenantProfileDets';
 
 export default function VerifyTenant() {
+  const navigate = useNavigate();
+  const { ownerId, residenceId } = useParams();
   let tenantID = '000'; // placeholder
   let tenant = tenantsData.tenants[tenantID];
   const location = useLocation();
+
   if (location.state) {
     const { result } = location.state;
     if (result) {
       tenantID = result;
       tenant = tenantsData.tenants[tenantID];
-      // console.log(tenantID);
     }
   }
 
   const updateTenantList = () => {
-    alert('update tenant list');
+    const ownerRef = ref(db, `/owners/${ownerId}/residences/${residenceId}`);
+
+    get(ownerRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const updateTenants = snapshot.child('tenants').val() || [];
+
+        updateTenants.push(tenantID);
+        console.log(updateTenants);
+
+        update(ownerRef, {
+          tenants: updateTenants,
+        });
+      }
+    });
+
+    navigate('/owner');
   };
   const handleTA = () => {
     alert('TA');
@@ -44,8 +63,9 @@ export default function VerifyTenant() {
             borderRadius: 6,
             p: 1,
           }}
-          component={Link}
-          to="/owner"
+          onClick={updateTenantList}
+          // component={Link}
+          // to="/owner"
         >
           <Typography textAlign="center" fontWeight="bold" color="#002d40">
             Approve Tenant
