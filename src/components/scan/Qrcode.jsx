@@ -1,11 +1,12 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useZxing } from 'react-zxing';
 
 export default function QrScanner() {
   const navigate = useNavigate();
+  const { ownerId, residenceId } = useParams();
   const [result, setResult] = useState('');
   const { ref } = useZxing({
     onDecodeResult(qrData) {
@@ -24,13 +25,13 @@ export default function QrScanner() {
 
   useEffect(() => {
     if (result) {
-      navigate('/owner/add-tenant/face/', {
+      navigate(`/owner/add-tenant/${ownerId}/${residenceId}/face/`, {
         state: {
           result,
         },
       });
     }
-  }, [result]);
+  }, [result, residenceId, navigate, ownerId]);
 
   return (
     <Stack

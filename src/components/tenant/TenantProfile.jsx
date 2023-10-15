@@ -3,17 +3,19 @@ import Typography from '@mui/material/Typography';
 import { onValue, ref } from 'firebase/database';
 import React, { useMemo, useState } from 'react';
 import QRCode from 'react-qr-code';
+import { useParams } from 'react-router-dom';
 
 import db from '../../config/firebase';
 import BotButton from '../shared/BotButton';
 import BottomNavBar from '../shared/BottomNavBar';
 import TenantProfileDets from './components/TenantProfileDets';
 
-export default function TenantProfilePage({ tenantID }) {
+export default function TenantProfilePage() {
+  const { tenantId } = useParams();
   const [tenantInfo, setTenantInfo] = useState({});
 
   useMemo(() => {
-    const dbref = ref(db, `/tenants/${tenantID}`);
+    const dbref = ref(db, `/tenants/${tenantId}`);
     return onValue(dbref, (snapshot) => {
       const info = snapshot.val();
       if (snapshot.exists()) {
@@ -21,7 +23,7 @@ export default function TenantProfilePage({ tenantID }) {
         console.log(info);
       }
     });
-  }, [tenantID]);
+  }, [tenantId]);
 
   return (
     <>
@@ -38,7 +40,7 @@ export default function TenantProfilePage({ tenantID }) {
         </Typography>
         <QRCode
           style={{ marginBottom: '4rem', maxWidth: '180px', width: '180px' }}
-          value={tenantID}
+          value={tenantId}
           viewBox="0 0 180 180"
         />
       </Box>
@@ -49,7 +51,7 @@ export default function TenantProfilePage({ tenantID }) {
         justifyContent="center"
       >
         <BotButton />
-        <BottomNavBar account="tenant" />
+        <BottomNavBar account="tenant" tenantId={tenantId} />
       </Box>
     </>
   );

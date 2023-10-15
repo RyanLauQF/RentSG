@@ -15,6 +15,18 @@ import db from '../../../config/firebase';
 import colourConverter from '../../shared/ColourConverter';
 import timeDiffConverter from '../../shared/TimeDifferenceConverter';
 
+function calculateRemainingDays(passExpiry, leaseExpiry) {
+  const timeDiffPass = timeDiffConverter(passExpiry);
+  const timeDiffLease = timeDiffConverter(leaseExpiry);
+  let timeDifference;
+  if (timeDiffPass < timeDiffLease) {
+    timeDifference = timeDiffPass;
+  } else {
+    timeDifference = timeDiffLease;
+  }
+  const daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+}
+
 export default function PersonCard({ personID, ownerID }) {
   const [tenantInfo, setTenantInfo] = useState({});
 
@@ -95,19 +107,16 @@ export default function PersonCard({ personID, ownerID }) {
                   }
                 />
               </Box>
-            ) : daysRemain <= 90 ? (
-              <Box>
-                <Typography variant="subtitle2" color="#002d40">
-                  Expiry date: {tenantInfo.passExpiry}
-                </Typography>
-                <Chip label={`${daysRemain} days remaining`} />
-              </Box>
             ) : (
               <Box>
                 <Typography variant="subtitle2" color="#002d40">
                   Expiry date: {tenantInfo.passExpiry}
                 </Typography>
-                <Chip label={`${monthsRemain} months remaining`} />
+                <Chip
+                  label={`${
+                    daysRemain <= 90 ? daysRemain : monthsRemain
+                  } days remaining`}
+                />
               </Box>
             )}
           </Stack>

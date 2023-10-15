@@ -95,6 +95,7 @@ export default function OwnerTenantPage({ ownerID }) {
         if (tenantIndex !== -1) {
           // Remove the tenant ID from the array
           updateTenants.splice(tenantIndex, 1);
+
           console.log(updateTenants);
 
           // Update the 'tenants' field in the database

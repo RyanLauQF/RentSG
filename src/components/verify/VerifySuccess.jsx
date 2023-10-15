@@ -6,9 +6,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function VerifySuccess() {
+  const tenantID = '000'; // placeholder
   const navigate = useNavigate();
   function handleClick() {
-    navigate('/tenant');
+    navigate(`/tenant/${tenantID}`);
   }
   return (
     <Stack

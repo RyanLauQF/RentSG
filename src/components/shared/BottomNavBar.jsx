@@ -6,7 +6,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import * as React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function BottomNavBar({ account }) {
+export default function BottomNavBar({ account, tenantId }) {
   const location = useLocation();
   const [value, setValue] = React.useState(location.pathname); // Initialize with the current route
 
@@ -29,17 +29,27 @@ export default function BottomNavBar({ account }) {
       >
         <BottomNavigationAction
           label="Home"
-          value={`/${account}`}
+          value={
+            account === 'owner' ? `/${account}` : `/${account}/${tenantId}`
+          }
           icon={<HomeIcon />}
           component={Link}
-          to={`/${account}`}
+          to={account === 'owner' ? `/${account}` : `/${account}/${tenantId}`}
         />
         <BottomNavigationAction
           label="Profile"
-          value={`/${account}/profile`}
+          value={
+            account === 'owner'
+              ? `/${account}/profile`
+              : `/${account}/${tenantId}/profile`
+          }
           icon={<PersonIcon />}
           component={Link}
-          to={`/${account}/profile`}
+          to={
+            account === 'owner'
+              ? `/${account}/profile`
+              : `/${account}/${tenantId}/profile`
+          }
         />
       </BottomNavigation>
     </Box>
