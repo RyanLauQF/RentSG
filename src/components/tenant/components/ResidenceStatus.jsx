@@ -13,11 +13,11 @@ import timeDiffConverter from '../../shared/TimeDifferenceConverter';
 
 const ResidenceStatusTheme = styled(Paper)(({ colour }) => ({
   display: 'flex',
+  alignItems: 'center', // Center vertically
   textAlign: 'center',
   justifyContent: 'center',
   backgroundColor: colour,
-  padding: '13px',
-  height: 80,
+  minHeight: 80, // Set a minimum height
   boxShadow: 3,
 }));
 
