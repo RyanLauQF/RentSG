@@ -62,7 +62,7 @@ export default function QrScanner() {
             overflow: 'hidden',
           }}
         >
-          <video ref={ref} style={{ transform: 'scaleX(-1)' }} />
+          <video ref={ref} />
           <Box
             sx={{
               height: '300px',

@@ -24,7 +24,6 @@ function calculateRemainingDays(passExpiry, leaseExpiry) {
     timeDifference = timeDiffLease;
   }
   const daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-  // console.log(daysRemain);
   return daysRemain;
 }
 
