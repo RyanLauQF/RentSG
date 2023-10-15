@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { onValue, ref } from 'firebase/database';
@@ -56,7 +55,7 @@ export default function TenantPage() {
           sx={{
             heighttransform: 'translateZ(0px)',
             flexGrow: 1,
-            pb: 8
+            pb: 8,
           }}
         >
           <FormControl
@@ -68,29 +67,25 @@ export default function TenantPage() {
             }}
             size="small"
           >
-            <InputLabel sx={{ color: 'white' }} id="demo-select-small-label">
-              Tenant ID
-            </InputLabel>
             <Select
               labelId="demo-select-small-label"
               id="demo-select-small"
               value={tenantId}
               label="Tenant"
               onChange={handleChange}
-              labelstyle={{ color: '#ff0000' }}
               sx={{
-                color: 'white',
+                color: 'transparent',
                 '.MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(0, 0, 0, 0)',
+                  borderColor: 'transparent',
                 },
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(0, 0, 0, 0)',
+                  borderColor: 'transparent',
                 },
                 '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(0, 0, 0, 0)',
+                  borderColor: 'transparent',
                 },
                 '.MuiSvgIcon-root ': {
-                  fill: 'white !important',
+                  fill: 'transparent !important',
                 },
               }}
             >
@@ -99,6 +94,7 @@ export default function TenantPage() {
               <MenuItem value="002">002</MenuItem>
               <MenuItem value="003">003</MenuItem>
               <MenuItem value="004">004</MenuItem>
+              <MenuItem value="005">005</MenuItem>
             </Select>
           </FormControl>
         </Box>

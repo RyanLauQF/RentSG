@@ -5,15 +5,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const tenantInfo = {
-  name: 'Bob Tan',
-  fin: 'G8765432A',
+  name: 'John Smith',
+  fin: 'S12345678A',
   dateOfBirth: '12 May 1980',
   sex: 'Male',
-  nationality: 'Indonesian',
+  nationality: 'African',
   issueDate: '26 Aug 2023',
-  expiryDate: '29 Aug 2024',
-  employer: 'NiL',
-  address: '123 Goldwater Avenue #01-55 Singapore 126358',
+  expiryDate: '10 Oct 2028',
+  employer: 'Goldsman Consultancy Pte Ltd',
+  occupation: 'Senior Consultant',
 };
 
 export default function RegisterForm() {
@@ -25,7 +25,7 @@ export default function RegisterForm() {
   const [issueDate, setIssueDate] = useState(tenantInfo.issueDate);
   const [expiryDate, setExpiryDate] = useState(tenantInfo.expiryDate);
   const [employer, setEmployer] = useState(tenantInfo.employer);
-  const [address, setAddress] = useState(tenantInfo.address);
+  const [occupation, setOccupation] = useState(tenantInfo.occupation);
 
   function handleChange(event) {
     const key = event.target.id;
@@ -56,8 +56,8 @@ export default function RegisterForm() {
       case 'employer':
         setEmployer(value);
         break;
-      case 'address':
-        setAddress(value);
+      case 'occupation':
+        setOccupation(value);
         break;
       default:
         break;
@@ -73,7 +73,7 @@ export default function RegisterForm() {
     issueDate !== '' &&
     expiryDate !== '' &&
     employer !== '' &&
-    address !== '';
+    occupation !== '';
 
   return (
     <Stack
@@ -171,13 +171,13 @@ export default function RegisterForm() {
         helperText={employer === '' ? 'Empty field!' : ' '}
       />
       <TextField
-        id="address"
-        label="Address"
+        id="occupation"
+        label="Occupation"
         variant="outlined"
-        defaultValue={address}
+        defaultValue={occupation}
         onChange={(e) => handleChange(e)}
-        error={address === ''}
-        helperText={address === '' ? 'Empty field!' : ' '}
+        error={occupation === ''}
+        helperText={occupation === '' ? 'Empty field!' : ' '}
       />
       <Fab
         style={{

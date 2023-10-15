@@ -100,7 +100,7 @@ export default function ResidenceStatus({
         ) : (
           <Box px={1} py={1.2}>
             <Typography variant="body1" sx={{ textAlign: 'center', p: 3.5 }}>
-              No registered residence.
+              No registered residence
             </Typography>
           </Box>
         )}
