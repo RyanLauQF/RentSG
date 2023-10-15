@@ -12,10 +12,11 @@ export default function LoginPage() {
       display="flex"
       justifyContent="center"
       alignItems="center"
-    // minHeight="100vh"
+      // minHeight="100vh"
       sx={{
         maxHeight: '100vh', // Set a maximum height equal to the viewport's height
-        overflow: 'auto', // Add scrollbars if the content overflows
+        overflow: 'auto',
+        p: 3, // Add scrollbars if the content overflows
       }}
     >
       <Grid
@@ -44,8 +45,8 @@ export default function LoginPage() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: 6,
-                minWidth: 260,
-                minHeight: 260,
+                minWidth: 280,
+                minHeight: 280,
                 backgroundColor: 'secondary.main',
                 transition: 'transform 0.1s ease-in-out',
                 color: 'primary.main',
@@ -101,8 +102,8 @@ export default function LoginPage() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: 6,
-                minWidth: 260,
-                minHeight: 260,
+                minWidth: 280,
+                minHeight: 280,
                 backgroundColor: 'secondary.main',
                 transition: 'transform 0.1s ease-in-out',
                 color: 'primary.main',
