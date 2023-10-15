@@ -129,8 +129,8 @@
     "005": {
       "firstName": "John",
       "lastName": "Smith",
-      "passExpiry": "2028-10-10",
-      "leaseExpiry": "2028-10-10",
+      "passExpiry": "2026-10-10",
+      "leaseExpiry": "2026-10-10",
       "imageUrl": "/assets/JohnSmith.jpg",
       "residence": "NULL",
       "residenceID": "000",
@@ -138,7 +138,7 @@
       "contactNo": "82719863",
       "nationality": "African",
       "finNumber": "S12345678A",
-      "lastDay": "2028-10-10"
+      "lastDay": "2026-10-10"
     }
   }
 }

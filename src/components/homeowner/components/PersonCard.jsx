@@ -103,8 +103,10 @@ export default function PersonCard({ personID, residenceID }) {
                 </Typography>
                 <Chip
                   label={`${
-                    daysRemain <= 90 ? daysRemain : monthsRemain
-                  } days remaining`}
+                    daysRemain <= 90
+                      ? `${daysRemain} days remaining`
+                      : `${monthsRemain} months remaining`
+                  }`}
                 />
               </Box>
             )}
