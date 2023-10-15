@@ -15,19 +15,7 @@ import db from '../../../config/firebase';
 import colourConverter from '../../shared/ColourConverter';
 import timeDiffConverter from '../../shared/TimeDifferenceConverter';
 
-function calculateRemainingDays(passExpiry, leaseExpiry) {
-  const timeDiffPass = timeDiffConverter(passExpiry);
-  const timeDiffLease = timeDiffConverter(leaseExpiry);
-  let timeDifference;
-  if (timeDiffPass < timeDiffLease) {
-    timeDifference = timeDiffPass;
-  } else {
-    timeDifference = timeDiffLease;
-  }
-  const daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-}
-
-export default function PersonCard({ personID, ownerID }) {
+export default function PersonCard({ personID, residenceID }) {
   const [tenantInfo, setTenantInfo] = useState({});
 
   useMemo(() => {
@@ -52,6 +40,7 @@ export default function PersonCard({ personID, ownerID }) {
   }
   const colour = colourConverter(timeDifference);
   let daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  console.log(daysRemain, tenantInfo.firstName);
   const monthsRemain = Math.floor(daysRemain / 30);
   if (daysRemain <= 0) {
     daysRemain = 0;
@@ -61,7 +50,7 @@ export default function PersonCard({ personID, ownerID }) {
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/owner/${personID}/profile`);
+    navigate(`/owner/${residenceID}/${personID}/profile`);
   };
 
   return (

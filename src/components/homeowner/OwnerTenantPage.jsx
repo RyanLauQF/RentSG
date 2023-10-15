@@ -68,7 +68,7 @@ function TenantProfileDets({ tenant }) {
 
 export default function OwnerTenantPage({ ownerID }) {
   const navigate = useNavigate();
-  const { tenantId } = useParams();
+  const { residenceId, tenantId } = useParams();
   const [tenantInfo, setTenantInfo] = useState({});
 
   useMemo(() => {
@@ -83,26 +83,18 @@ export default function OwnerTenantPage({ ownerID }) {
 
   const handleDelete = () => {
     // delete tenant from owner and navigate back to owner page
-    const residenceId = tenantInfo.residenceID;
     const ownerRef = ref(db, `/owners/${ownerID}/residences/${residenceId}`);
 
     get(ownerRef).then((snapshot) => {
       if (snapshot.exists()) {
-        const updateTenants = snapshot.child('tenants').val() || [];
+        const updateTenants = snapshot.child('tenants').val() || {};
+        console.log(updateTenants, tenantId, residenceId);
+        delete updateTenants[tenantId];
 
-        const tenantIndex = updateTenants.indexOf(tenantId);
-
-        if (tenantIndex !== -1) {
-          // Remove the tenant ID from the array
-          updateTenants.splice(tenantIndex, 1);
-
-          console.log(updateTenants);
-
-          // Update the 'tenants' field in the database
-          update(ownerRef, {
-            tenants: updateTenants,
-          });
-        }
+        console.log(updateTenants);
+        update(ownerRef, {
+          tenants: updateTenants,
+        });
       }
     });
 

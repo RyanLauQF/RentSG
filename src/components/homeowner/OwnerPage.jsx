@@ -24,15 +24,9 @@ function calculateRemainingDays(passExpiry, leaseExpiry) {
     timeDifference = timeDiffLease;
   }
   const daysRemain = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-  console.log(passExpiry, leaseExpiry);
+  // console.log(daysRemain);
   return daysRemain;
 }
-
-// .sort(
-//   (a, b) =>
-//     calculateRemainingDays(a.passExpiry, a.leaseExpiry) -
-//     calculateRemainingDays(b.passExpiry, b.leaseExpiry)
-// )
 
 export default function HomeOwnerPage({ ownerID }) {
   const [ownerInfo, setOwnerInfo] = useState({});
@@ -80,9 +74,15 @@ export default function HomeOwnerPage({ ownerID }) {
                   {residence.type}
                 </Typography>
               </Stack>
-              {residence.tenants.map((tenantID) => (
-                <PersonCard personID={tenantID} ownerID={ownerID} />
-              ))}
+              {Object.entries(residence.tenants)
+                .sort(
+                  ([, a], [, b]) =>
+                    calculateRemainingDays(a.passExpiry, a.leaseExpiry) -
+                    calculateRemainingDays(b.passExpiry, b.leaseExpiry)
+                )
+                .map(([tenantID, details]) => (
+                  <PersonCard personID={tenantID} residenceID={id} />
+                ))}
               <AddPerson ownerID={ownerID} residenceID={id} />
             </Box>
           ))

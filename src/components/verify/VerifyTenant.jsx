@@ -1,9 +1,9 @@
 import { Box, Button, Typography } from '@mui/material';
-import { get, ref, update } from 'firebase/database';
-import * as React from 'react';
+import { get, onValue, ref, update } from 'firebase/database';
+import React, { useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import tenantsData from '../../assets/tenants.json';
+// import tenantsData from '../../assets/tenants.json';
 import db from '../../config/firebase';
 import FunctionButton from '../homeowner/components/FunctionButton';
 import TenantProfileDets from '../tenant/components/TenantProfileDets';
@@ -12,25 +12,39 @@ export default function VerifyTenant() {
   const navigate = useNavigate();
   const { ownerId, residenceId } = useParams();
   let tenantID = '000'; // placeholder
-  let tenant = tenantsData.tenants[tenantID];
+  // let tenant = tenantsData.tenants[tenantID];
+  const [tenantInfo, setTenantInfo] = useState({});
   const location = useLocation();
 
   if (location.state) {
     const { result } = location.state;
     if (result) {
       tenantID = result;
-      tenant = tenantsData.tenants[tenantID];
     }
   }
+
+  useMemo(() => {
+    const dbref = ref(db, `/tenants/${tenantID}`);
+    return onValue(dbref, (snapshot) => {
+      const info = snapshot.val();
+      if (snapshot.exists()) {
+        setTenantInfo(info);
+        console.log(info);
+      }
+    });
+  }, [tenantID]);
 
   const updateTenantList = () => {
     const ownerRef = ref(db, `/owners/${ownerId}/residences/${residenceId}`);
 
     get(ownerRef).then((snapshot) => {
       if (snapshot.exists()) {
-        const updateTenants = snapshot.child('tenants').val() || [];
+        const updateTenants = snapshot.child('tenants').val() || {};
 
-        updateTenants.push(tenantID);
+        updateTenants[tenantID] = {
+          passExpiry: tenantInfo.passExpiry,
+          leaseExpiry: tenantInfo.leaseExpiry,
+        };
         console.log(updateTenants);
 
         update(ownerRef, {
@@ -47,7 +61,7 @@ export default function VerifyTenant() {
 
   return (
     <>
-      <TenantProfileDets tenant={tenant} />
+      <TenantProfileDets tenant={tenantInfo} />
       <FunctionButton
         performFunction="Tenancy Agreement"
         handleClick={handleTA}

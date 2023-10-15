@@ -10,21 +10,44 @@
       "residences": {
         "000": {
           "residenceName": "Binjai Hall #19",
-          "tenants": ["000", "003"],
+          "tenants": {
+            "000": {
+              "passExpiry": "2023-09-11",
+              "leaseExpiry": "2028-10-10"
+            },
+            "003": {
+              "passExpiry": "2023-11-16",
+              "leaseExpiry": "2024-10-11"
+            }
+          },
           "type": "4-room HDB",
           "availability": 1,
           "imgSrc": "/assets/condo1.jpeg"
         },
         "001": {
           "residenceName": "Tanjong Hall #20",
-          "tenants": ["001", "002"],
+          "tenants": {
+            "001": {
+              "passExpiry": "2029-09-28",
+              "leaseExpiry": "2029-09-28"
+            },
+            "002": {
+              "passExpiry": "2024-07-25",
+              "leaseExpiry": "2023-10-25"
+            }
+          },
           "type": "2-room Condo",
           "availability": 1,
           "imgSrc": "/assets/hdb1.jpg"
         },
         "002": {
           "residenceName": "Banyan Hall #21",
-          "tenants": ["004"],
+          "tenants": {
+            "004": {
+              "passExpiry": "2028-10-10",
+              "leaseExpiry": "2028-10-10"
+            }
+          },
           "type": "3-room HDB",
           "availability": 2,
           "imgSrc": "/assets/hdb2.jpg"
@@ -102,7 +125,7 @@
       "nationality": "Korean",
       "finNumber": "S12345678A",
       "lastDay": "2028-10-10"
-    }, 
+    },
     "005": {
       "firstName": "John",
       "lastName": "Corden",
