@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import LoginPage from './components/auth/LoginPage';
 import RegisterForm from './components/auth/RegisterTenant';
+import ChatBotPage from './components/chatbot/pages/chatbot';
 import HomeOwnerPage from './components/homeowner/OwnerPage';
 import OwnerProfile from './components/homeowner/OwnerProfile';
 import OwnerTenantPage from './components/homeowner/OwnerTenantPage';
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: 'tenant/onboard/verify/success/',
         element: <VerifySuccess />,
+      },
+      {
+        path: '/chatpage',
+        element: <ChatBotPage />,
       },
     ],
   },
