@@ -39,7 +39,7 @@ export default function TenantPage() {
   }, [tenantId]);
 
   return (
-    <Box height="100vh" display="flex" flexDirection="column" sx={{ pb: 7 }}>
+    <>
       <Header name={tenantInfo.firstName} />
       <Divider
         sx={{ backgroundColor: '#1aa6b7', borderBottomWidth: 3, mx: '2rem' }}
@@ -56,6 +56,7 @@ export default function TenantPage() {
           sx={{
             heighttransform: 'translateZ(0px)',
             flexGrow: 1,
+            pb: 8
           }}
         >
           <FormControl
@@ -103,6 +104,6 @@ export default function TenantPage() {
         </Box>
         <BottomNavBar account="tenant" tenantId={tenantId} />
       </Box>
-    </Box>
+    </>
   );
 }
