@@ -4,18 +4,19 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {
   Avatar,
   ChatContainer,
+  ConversationHeader,
   MainContainer,
   Message,
   MessageInput,
   MessageList,
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+// import Box from '@mui/material/Box';
+// import Button from '@mui/material/Button';
+// import Paper from '@mui/material/Paper';
+// import Stack from '@mui/material/Stack';
+// import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -101,50 +102,21 @@ function ChatBotPage({ name }) {
       });
   }
   return (
-    <Box
+    <div
       style={{
-        position: 'relative',
         width: '100%',
-        margin: '2 rem auto',
-        overflowY: 'auto',
-        height: '80vh',
+        height: '100%',
+        position: 'absolute',
+        margin: 0,
+        padding: 0,
       }}
     >
-      <Paper
-        sx={{
-          display: 'flex', // Use Flexbox
-          flexDirection: 'column', // Stack items vertically
-          alignItems: 'center', // Center horizontally
-          justifyContent: 'center', // Center vertically
-          elevation: 10,
-          height: '7vh',
-        }}
-      >
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Button
-            onClick={() => {
-              navigate(-1);
-            }}
-            sx={{ marginLeft: 2 }}
-          >
-            <ArrowBackIcon />
-          </Button>
-          <Typography
-            variant="h5"
-            color="primary.main"
-            sx={{ fontWeight: 'bold' }}
-            gutterBottom
-          >
-            Chatbot
-          </Typography>
-        </Stack>
-      </Paper>
-      <MainContainer>
+      <MainContainer responsive>
         <ChatContainer>
+          <ConversationHeader>
+            <ConversationHeader.Back onClick={() => navigate(-1)} />
+            <ConversationHeader.Content userName="Chatbot" />
+          </ConversationHeader>
           <MessageList
             scrollBehavior="smooth"
             typingIndicator={
@@ -164,7 +136,7 @@ function ChatBotPage({ name }) {
               >
                 {message.sender === 'user' ? null : (
                   <Avatar
-                    src="https://static.vecteezy.com/system/resources/previews/016/765/684/original/owl-cartoon-animal-png.png"
+                    src="https://previews.123rf.com/images/hellonage/hellonage2306/hellonage230601310/206917595-cute-cartoon-owl-in-police-uniform-watercolor-illustration-isolated-on-white-background.jpg"
                     name="Owl"
                     size="m"
                   />
@@ -175,7 +147,7 @@ function ChatBotPage({ name }) {
           <MessageInput placeholder="Type message here" onSend={handleSend} />
         </ChatContainer>
       </MainContainer>
-    </Box>
+    </div>
   );
 }
 
