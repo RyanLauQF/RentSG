@@ -1,5 +1,5 @@
-import './chatbot.css';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import './chatbot.css';
 
 import {
   Avatar,
@@ -33,7 +33,7 @@ function ChatBotPage({ name }) {
 
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I'm Oscar the owl put on Rent Watch! Ask me anything!",
+      message: "Hello, I'm Oscar, the owl put on RentSG! Ask me anything!",
       sentTime: 'just now',
       sender: 'ChatGPT',
     },
@@ -108,7 +108,7 @@ function ChatBotPage({ name }) {
         height: '100%',
         position: 'absolute',
         margin: 0,
-        padding: 0,
+        // paddingBottom: 5,
       }}
     >
       <MainContainer responsive>
@@ -118,7 +118,7 @@ function ChatBotPage({ name }) {
             <ConversationHeader.Content userName="Chatbot" />
           </ConversationHeader>
           <MessageList
-            scrollBehavior="smooth"
+            scrollBehavior="auto"
             typingIndicator={
               isTyping ? (
                 <TypingIndicator content="Oscar is thinking..." />
@@ -130,13 +130,14 @@ function ChatBotPage({ name }) {
                 key={i}
                 model={{ ...message, position: 'single' }}
                 avatarPosition="cl"
-                className={
-                  message.sender === 'user' ? 'user-message' : 'sender-message'
-                }
+                // className={
+                //   message.sender === 'user' ? 'user-message' : 'sender-message'
+                // }
               >
                 {message.sender === 'user' ? null : (
                   <Avatar
-                    src="https://previews.123rf.com/images/hellonage/hellonage2306/hellonage230601310/206917595-cute-cartoon-owl-in-police-uniform-watercolor-illustration-isolated-on-white-background.jpg"
+                    // src="https://previews.123rf.com/images/hellonage/hellonage2306/hellonage230601310/206917595-cute-cartoon-owl-in-police-uniform-watercolor-illustration-isolated-on-white-background.jpg"
+                    src="/assets/owl.png"
                     name="Owl"
                     size="m"
                   />
@@ -144,7 +145,11 @@ function ChatBotPage({ name }) {
               </Message>
             ))}
           </MessageList>
-          <MessageInput placeholder="Type message here" onSend={handleSend} />
+          <MessageInput
+            placeholder="Type message here"
+            onSend={handleSend}
+            style={{ paddingBottom: 10, paddingTop: 10 }}
+          />
         </ChatContainer>
       </MainContainer>
     </div>
