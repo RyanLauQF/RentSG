@@ -124,6 +124,7 @@ function ChatBotPage({ name }) {
                 <TypingIndicator content="Oscar is thinking..." />
               ) : null
             }
+            style={{ paddingRight: 1, paddingLeft: 3 }}
           >
             {messages.map((message, i) => (
               <Message
