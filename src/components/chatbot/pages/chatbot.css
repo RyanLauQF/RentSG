@@ -1,17 +1,7 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 20px;
-  overflow: hidden;
+.user-message {
+  background-color: #d9ecf2;
 }
 
-.greeting {
-  text-align: left;
-  font-size: 2em; /* Adjust to your preference */
-}
-
-.greeting span {
-  display: block;
+.sender-message {
+  background-color: #1aa6b7;
 }
