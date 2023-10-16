@@ -9,7 +9,7 @@ const tenantInfo = {
   fin: 'S12345678A',
   dateOfBirth: '12 May 1980',
   sex: 'Male',
-  nationality: 'African',
+  nationality: 'Chinese',
   issueDate: '26 Aug 2023',
   expiryDate: '10 Oct 2028',
   employer: 'Goldsman Consultancy Pte Ltd',
